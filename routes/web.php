@@ -12,5 +12,9 @@ use App\Http\Controllers\mainController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/tes',[mainController::class,'index']);
+Route::get('/home',[mainController::class,'index']);
 
+
+Auth::routes();
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -1,0 +1,19 @@
+.container {
+    margin-top: 15vmax;
+    font-family: sans-serif;
+
+}
+
+.fw-bold {
+    font-weight: 900;
+}
+
+.card {
+    box-shadow: 2px 2px 5px 0px grey;
+}
+
+@media (min-width: 576px) {
+    .container {
+        margin-top: 10vmax;
+    }
+}
