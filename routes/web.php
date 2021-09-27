@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\mainController;
+use App\Http\Controllers\userController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +14,7 @@ use App\Http\Controllers\mainController;
 |
 */
 Route::get('/home',[mainController::class,'index']);
+Route::get('/user',[userController::class,'index']);
 
 
 Auth::routes();
