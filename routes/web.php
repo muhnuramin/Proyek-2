@@ -15,7 +15,8 @@ use App\Http\Controllers\userController;
 */
 Route::get('/home',[mainController::class,'index']);
 Route::get('/user',[userController::class,'index']);
-
+Route::get('/user/add',[userController::class,'add']);
+Route::post('/user/create',[userController::class,'create']);
 
 Auth::routes();
 
