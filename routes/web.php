@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\mainController;
+use App\Http\Controllers\userController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,5 +13,11 @@ use App\Http\Controllers\mainController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/tes',[mainController::class,'index']);
+Route::get('/home',[mainController::class,'index']);
+Route::get('/user',[userController::class,'index']);
+Route::post('/user/create',[userController::class,'create']);
+Route::post('/user/update/{id}',[userController::class,'update']);
+Route::get('/user/delete/{id}',[userController::class,'delete']);
+Auth::routes();
 
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
