@@ -15,9 +15,9 @@ use App\Http\Controllers\userController;
 */
 Route::get('/home',[mainController::class,'index']);
 Route::get('/user',[userController::class,'index']);
-Route::get('/user/add',[userController::class,'add']);
 Route::post('/user/create',[userController::class,'create']);
-
+Route::post('/user/update/{id}',[userController::class,'update']);
+Route::get('/user/delete/{id}',[userController::class,'delete']);
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

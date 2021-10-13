@@ -12,10 +12,6 @@ class userController extends Controller
         return view('user.Muser',['User'=>$users]);
     }
 
-    public function add(){
-        return view('user.adduser');
-    }
-
     public function create(Request $request){
         User::create([
             'name'=>$request->name,
@@ -23,6 +19,22 @@ class userController extends Controller
             'password'=>$request->password,
             'roles'=>$request->roles
         ]);
+        return redirect('/user');
+    }
+
+    public function update($id,Request $request){
+        $user=User::find($id);
+        $user->name=$request->name;
+        $user->email=$request->email;
+        $user->password=$request->password;
+        $user->roles=$request->roles;
+        $user->save();
+        return redirect('/user');
+    }
+
+    public function delete($id){
+        $user=User::find($id);
+        $user->delete();
         return redirect('/user');
     }
 }

@@ -5,7 +5,7 @@
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item active"><i class="fas fa-tachometer-alt"></i>&nbsp;Dashboard&nbsp; / &nbsp;User</li>
     </ol>
-    <a href="user/add" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addUser">Add User</a>
+    <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addUser">Add User</a>
     <button type="button" class="btn btn-success">Export PDF</button>
     <div class="card mb-4 mt-2">
         <div class="card-body">
@@ -27,8 +27,8 @@
                         <td>{{$user->email}}</td>
                         <td>{{$user->roles}}</td>
                         <td>
-                            <button type="button" class="btn btn-warning">Edit</button>
-                            <button type="button" class="btn btn-danger">Delete</button>
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editUser">Edit</button>
+                            <a href="user/delete/{{$user->id}}" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                     @endforeach
@@ -39,7 +39,6 @@
 </div>
 
 {{-- Modal Tambah user --}}
-<!-- Modal -->
 <div class="modal fade" id="addUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -82,4 +81,49 @@
     </div>
 </div>
 {{-- Tutup tambah user --}}
+
+{{-- Modal edit user --}}
+<div class="modal fade" id="editUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-user"></i> EDIT USER</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid px-4">
+                    <form action="/user/update/{{$user->id}}" method="POST" enctype="multipart/form-data" class="mr-8">
+                        @csrf
+                        <div class="form-group">
+                            <label for="name">Nama</label>
+                            <input type="text" class="form-control" required="required" name="name" value="{{$user->name}}"><br>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" class="form-control" required="required" name="email" value="{{$user->email}}"><br>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" encrypt="sha1" pattern=".{6,}" class="form-control" required="required"
+                                name="password" value="{{$user->password}}"><br>
+                        </div>
+                        <label for="roles">Roles</label>
+                        <select class="form-select" name="roles">
+                            <option value="{{$user->roles}}"></option>
+                            <option value="Administrator">Admin</option>
+                            <option value="Kasir">Kasir</option>
+                            <option value="Barang">Barang</option>
+                        </select>
+                    </div>
+                        <div class="modal-footer">
+                        <button type="submit" class="btn btn-warning mt-3">Edit User</button>
+                        <button type="submit" class="btn btn-secondary mt-3" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            
+        </div>
+    </div>
+</div>
+{{-- Tutup edit user --}}
 @endsection
