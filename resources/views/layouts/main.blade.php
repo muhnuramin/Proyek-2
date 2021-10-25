@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <title>SI Pengolahan Toko</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <link href="{{asset('https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css')}}" rel="stylesheet" />
         <link href="{{asset('css/styles.css')}}" rel="stylesheet" />
         <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js')}}" crossorigin="anonymous"></script>
@@ -114,5 +115,20 @@
         <script src="{{asset('assets/demo/chart-bar-demo.js')}}"></script>
         <script src="{{asset('https://cdn.jsdelivr.net/npm/simple-datatables@latest')}}" crossorigin="anonymous"></script>
         <script src="{{asset('js/datatables-simple-demo.js')}}"></script>
+        <script>
+            $(document).on('click','#btn-edit-user',function(){
+                let id=$(this).data('id');
+                let name=$(this).data('name');
+                let email=$(this).data('email');
+                let password=$(this).data('password');
+                let roles=$(this).data('roles');
+                
+                $('#edit-id').val(id);
+                $('#edit-name').val(name);
+                $('#edit-email').val(email);
+                $('#edit-password').val(password);
+                $('#edit-roles').val(roles);
+            });
+        </script>
     </body>
 </html>

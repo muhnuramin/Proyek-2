@@ -22,8 +22,9 @@ class userController extends Controller
         return redirect('/user');
     }
 
-    public function update($id,Request $request){
-        $user=User::find($id);
+    public function update(Request $request){
+        $user=User::find($request->id);
+        $user->id=$request->id;
         $user->name=$request->name;
         $user->email=$request->email;
         $user->password=$request->password;
