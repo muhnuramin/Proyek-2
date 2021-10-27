@@ -8,7 +8,10 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <link href="{{asset('https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css')}}" rel="stylesheet" />
         <link href="{{asset('css/styles.css')}}" rel="stylesheet" />
+        <link href="{{asset('css/customStyle.css')}}" rel="stylesheet" />
         <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js')}}" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-light bg-light">
@@ -57,8 +60,7 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+                                    <a class="nav-link" href="/barang">Data Barang</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
@@ -73,9 +75,6 @@
                                     </a>
                                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
                                         Pembelian
-                                    </a>
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                        Pelayanan
                                     </a>
                                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
                                         Data Keuangan
@@ -129,6 +128,27 @@
                 $('#edit-password').val(password);
                 $('#edit-roles').val(roles);
             });
+
+            $(document).on('click','#btn-edit-barang',function(){
+                let id=$(this).data('id');
+                let name=$(this).data('name');
+                let merk=$(this).data('merk');
+                let stock=$(this).data('stock');
+                let harga_jual=$(this).data('harga_jual');
+                let harga_beli=$(this).data('harga_beli');
+                
+                $('#edit-id').val(id);
+                $('#edit-name').val(name);
+                $('#edit-merk').val(merk);
+                $('#edit-stock').val(stock);
+                $('#edit-harga_jual').val(harga_jual);
+                $('#edit-harga_beli').val(harga_beli);
+            });
+        </script>
+        <script>
+            @if(Session::has('pesan'))
+                toastr.{{Session::get('alert')}}("{{Session::get('pesan')}}");
+            @endif
         </script>
     </body>
 </html>

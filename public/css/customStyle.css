@@ -1,0 +1,17 @@
+.label-ada {
+    background-color: rgb(17, 182, 17);
+    color: white;
+    height: 25px;
+    width: 70px;
+    font-weight: bold;
+    padding: 1px 10px 1px 10px;
+}
+
+.label-kosong {
+    background-color: rgb(223, 69, 69);
+    color: white;
+    height: 25px;
+    width: 70px;
+    font-weight: bold;
+    padding: 1px 10px 1px 10px;
+}

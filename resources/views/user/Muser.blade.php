@@ -36,7 +36,7 @@
                             data-password="{{$user->password}}"
                             data-roles="{{$user->roles}}"
                             >
-                                <i class="fa fa-edit"></I>
+                                <i class="fa fa-edit"></i>
                             </button>
                             <a href="user/delete/{{$user->id}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                         </td>
@@ -103,9 +103,8 @@
             <div class="modal-body">
                 <div class="container-fluid px-4">
                     <form action="{{route('update.id')}}" method="POST" enctype="multipart/form-data" class="mr-8">
-                        {{-- @method('PUT') --}}
                         @csrf
-                        <input type="text" class="form-control" name="id" id="edit-id"><br>
+                        <input type="hidden" class="form-control" name="id" id="edit-id"><br>
                         <div class="form-group">
                             <label for="name">Nama</label>
                             <input type="text" class="form-control" name="name" id="edit-name"><br>
