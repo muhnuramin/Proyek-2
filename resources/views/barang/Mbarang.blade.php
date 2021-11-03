@@ -17,7 +17,7 @@
                         <th>Stock</th>
                         <th>Harga jual</th>
                         <th>Harga beli</th>
-                        <th>Status</th>
+                        <th>Laba</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -28,19 +28,9 @@
                         <td>{{$barang->name}}</td>
                         <td>{{$barang->merk}}</td>
                         <td>{{$stok=$barang->stock}}</td>
-                        <td>{{$barang->harga_jual}}</td>
-                        <td>{{$barang->harga_beli}}</td>
-                        <td>
-                            @if ($stok>0)
-                                <div class="label-ada rounded">
-                                    Ada
-                                </div>
-                            @else
-                                <div class="label-kosong rounded">
-                                    Kosong
-                                </div>
-                            @endif
-                        </td>
+                        <td>Rp. {{$hj=$barang->harga_jual}}</td>
+                        <td>Rp. {{$hb=$barang->harga_beli}}</td>
+                        <td>Rp. {{$hj-$hb}}</td>
                         <td><button type="button" class="btn btn-warning" id="btn-edit-barang" 
                             data-bs-toggle="modal" 
                             data-bs-target="#editItem"

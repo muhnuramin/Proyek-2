@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -21,8 +22,16 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('dashboard');
+        $request=User::all();
+        dd($request);
+        // if ($request->roles==('Barang')) {
+        //     return redirect('/barang');
+        // }elseif ($request->roles==('Kasir')) {
+        //     return redirect('/');
+        // }elseif ($request->roles==('Administrator')) {
+        //     return redirect('/home');
+        // }
     }
 }

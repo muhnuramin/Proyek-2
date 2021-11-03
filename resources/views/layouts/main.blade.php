@@ -47,12 +47,15 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
+                            @can('manage-all')
                             <div class="sb-sidenav-menu-heading">Core</div>
                             <a class="nav-link" href="/">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
+                            @endcan
                             <div class="sb-sidenav-menu-heading">Manage</div>
+                            @can('manage-barang')
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-box-open"></i></div>
                                 Barang
@@ -63,6 +66,8 @@
                                     <a class="nav-link" href="/barang">Data Barang</a>
                                 </nav>
                             </div>
+                            @endcan
+                            @can('manage-keuangan')
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-money-bill-wave-alt"></i></div>
                                 Keuangan
@@ -81,11 +86,14 @@
                                     </a>
                                 </nav>
                             </div>
+                            @endcan
+                            @can('manage-all')
                             <div class="sb-sidenav-menu-heading">Addons</div>
                             <a class="nav-link" href="/user">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                                 User
                             </a>
+                            @endcan
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
