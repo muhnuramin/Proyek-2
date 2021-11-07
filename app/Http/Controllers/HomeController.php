@@ -24,8 +24,9 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $request=User::all();
-        dd($request);
+        return redirect('/home');
+        // $request=User::all();
+        // dd($request);
         // if ($request->roles==('Barang')) {
         //     return redirect('/barang');
         // }elseif ($request->roles==('Kasir')) {

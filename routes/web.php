@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\mainController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\barangController;
+use App\Http\Controllers\penjualanController;
+use App\Http\Controllers\pembelianController;
+use App\Http\Controllers\laporanController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,6 +27,12 @@ Route::get('/barang',[barangController::class,'index']);
 Route::post('/item/create',[barangController::class,'create']);
 Route::post('/item/update',[barangController::class,'update'])->name('update.item');
 Route::get('/item/delete/{id}',[barangController::class,'delete']);
+
+Route::get('/penjualan',[penjualanController::class,'index']);
+
+Route::get('/pembelian',[pembelianController::class,'index']);
+
+Route::get('/laporan',[laporanController::class,'index']);
 
 Auth::routes();
 
