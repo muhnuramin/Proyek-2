@@ -25,14 +25,16 @@ Route::get('/user/delete/{id}',[userController::class,'delete']);
 
 Route::get('/barang',[barangController::class,'index']);
 Route::post('/item/create',[barangController::class,'create']);
-Route::post('/item/update',[barangController::class,'update'])->name('update.item');
-Route::get('/item/delete/{id}',[barangController::class,'delete']);
+Route::post('/item/update',[barangController::class,'update'])->name('update');
+Route::get('/item/delete/{id_barang}',[barangController::class,'delete']);
 
 Route::get('/penjualan',[penjualanController::class,'index']);
+Route::get('/pembelian/autofill',[penjualanController::class,'index'])->name('autofill');
 
 Route::get('/pembelian',[pembelianController::class,'index']);
 
 Route::get('/laporan',[laporanController::class,'index']);
+Route::post('/laporan',[laporanController::class,'refresh']);
 
 Auth::routes();
 

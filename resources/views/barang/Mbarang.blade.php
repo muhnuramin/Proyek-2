@@ -34,14 +34,14 @@
                         <td><button type="button" class="btn btn-warning" id="btn-edit-barang" 
                             data-bs-toggle="modal" 
                             data-bs-target="#editItem"
-                            data-id="{{$barang->id}}"
+                            data-id="{{$barang->id_barang}}"
                             data-name="{{$barang->name}}"
                             data-merk="{{$barang->merk}}"
                             data-stock="{{$barang->stock}}"
                             data-harga_jual="{{$barang->harga_jual}}"
                             data-harga_beli="{{$barang->harga_beli}}"
                             ><i class="fa fa-edit"></i></button>
-                            <a href="item/delete/{{$barang->id}}" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+                            <a href="item/delete/{{$barang->id_barang}}" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -105,9 +105,9 @@
             </div>
             <div class="modal-body">
                 <div class="container-fluid px-4">
-                    <form action="{{route('update.item')}}" method="POST" enctype="multipart/form-data" class="mr-8">
+                    <form action="{{route('update')}}" method="POST" enctype="multipart/form-data" class="mr-8">
                         @csrf
-                        <input type="hidden" class="form-control" name="id" id="edit-id"><br>
+                        <input type="hidden" class="form-control" name="id_barang" id="edit-id"><br>
                         <div class="form-group">
                             <label for="name">Nama Barang</label>
                             <input type="text" class="form-control" name="name" id="edit-name"><br>

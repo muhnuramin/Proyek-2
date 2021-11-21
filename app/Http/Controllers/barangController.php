@@ -28,8 +28,8 @@ class barangController extends Controller
     }
 
     public function update(Request $request){
-        $barang=Barang::find($request->id);
-        $barang->id=$request->id;
+        $barang=Barang::find($request->id_barang);
+        $barang->id_barang=$request->id_barang;
         $barang->name=$request->name;
         $barang->merk=$request->merk;
         $barang->stock=$request->stock;
@@ -41,6 +41,7 @@ class barangController extends Controller
             'alert'=>'success',
         );
         return redirect('/barang')->with($notifikasi);
+        
     }
 
     public function delete($id){

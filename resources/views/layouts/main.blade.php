@@ -81,7 +81,7 @@
                                     <a class="nav-link collapsed" href="/pembelian">
                                         Pembelian
                                     </a>
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                    <a class="nav-link collapsed" href="/laporan">
                                         Data Keuangan
                                     </a>
                                 </nav>
@@ -154,12 +154,19 @@
             });
         </script>
         <script>
-            function autofill() {
-                var id=$("#id").val();
-                var name=$("#name").val();
-                var harga_jual=$("#harga_jual").val();
-                alert(id)
-            }
+            $(document).on('click','#btn-edit-user',function(){
+                let id_barang=$(this).data('id_barang');
+                let name=$(this).data('name');
+                let merk=$(this).data('merk');
+                let harga_jual=$(this).data('harga_jual');
+                let stock=$(this).data('stock');
+                
+                $('#pilih-id_barang').val(id_barang);
+                $('#pilih-name').val(name);
+                $('#pilih-merk').val(merk);
+                $('#pilih-harga_jual').val(harga_jual);
+                $('#pilih-stock').val(stock);
+            });
         </script>
         <script>
             @if(Session::has('pesan'))
