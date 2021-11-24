@@ -154,7 +154,7 @@
             });
         </script>
         <script>
-            $(document).on('click','#btn-edit-user',function(){
+            $(document).on('click','#btn-pilih-user',function(){
                 let id_barang=$(this).data('id_barang');
                 let name=$(this).data('name');
                 let merk=$(this).data('merk');
