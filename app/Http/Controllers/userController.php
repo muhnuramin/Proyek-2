@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-
+use Illuminate\Support\Facades\Hash;
+use Session;
 class userController extends Controller
 {
     public function index(){
@@ -16,25 +17,39 @@ class userController extends Controller
         User::create([
             'name'=>$request->name,
             'email'=>$request->email,
-            'password'=>$request->password,
+            'password'=>Hash::make($request->password),
             'roles'=>$request->roles
         ]);
-        return redirect('/user');
+        $notifikasi=array(
+            'pesan'=>'User berhasil ditambahkan',
+            'alert'=>'success',
+        );
+        
+        return redirect('/user')->with($notifikasi);
     }
 
-    public function update($id,Request $request){
-        $user=User::find($id);
+    public function update(Request $request){
+        $user=User::find($request->id);
+        $user->id=$request->id;
         $user->name=$request->name;
         $user->email=$request->email;
-        $user->password=$request->password;
+        $user->password=Hash::make($request->password);
         $user->roles=$request->roles;
         $user->save();
-        return redirect('/user');
+        $notifikasi=array(
+            'pesan'=>'User berhasil diedit',
+            'alert'=>'success',
+        );
+        return redirect('/user')->with($notifikasi);
     }
 
     public function delete($id){
         $user=User::find($id);
         $user->delete();
-        return redirect('/user');
+        $notifikasi=array(
+            'pesan'=>'User berhasil dihapus',
+            'alert'=>'warning',
+        );
+        return redirect('/user')->with($notifikasi);
     }
 }

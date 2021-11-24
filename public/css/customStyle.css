@@ -1,0 +1,25 @@
+.label-ada {
+    background-color: rgb(17, 182, 17);
+    color: white;
+    height: 25px;
+    width: 70px;
+    font-weight: bold;
+    padding: 1px 10px 1px 10px;
+}
+
+.label-kosong {
+    background-color: rgb(223, 69, 69);
+    color: white;
+    height: 25px;
+    width: 70px;
+    font-weight: bold;
+    padding: 1px 10px 1px 10px;
+}
+
+.harga {
+    border: 1px solid rgb(216, 213, 213);
+    font-size: 20px;
+    margin-bottom: 8px;
+    text-align: right;
+    padding-right: 2px;
+}

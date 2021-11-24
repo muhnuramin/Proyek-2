@@ -5,8 +5,8 @@
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item active"><i class="fas fa-tachometer-alt"></i>&nbsp;Dashboard&nbsp; / &nbsp;User</li>
     </ol>
-    <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addUser">Add User</a>
-    <button type="button" class="btn btn-success">Export PDF</button>
+    <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addUser"><i class="fa fa-user-plus"></i>&nbsp;Add User</a>
+    <button type="button" class="btn btn-success"><i class="fas fa-file-pdf"></i>&nbsp;Export PDF</button>
     <div class="card mb-4 mt-2">
         <div class="card-body">
             <table id="datatablesSimple">
@@ -27,8 +27,18 @@
                         <td>{{$user->email}}</td>
                         <td>{{$user->roles}}</td>
                         <td>
-                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editUser">Edit</button>
-                            <a href="user/delete/{{$user->id}}" class="btn btn-danger">Delete</a>
+                            <button type="button" class="btn btn-warning" id="btn-edit-user"
+                            data-bs-toggle="modal" 
+                            data-bs-target="#editUser"
+                            data-id="{{$user->id}}"
+                            data-name="{{$user->name}}"
+                            data-email="{{$user->email}}"
+                            data-password="{{$user->password}}"
+                            data-roles="{{$user->roles}}"
+                            >
+                                <i class="fa fa-edit"></i>
+                            </button>
+                            <a href="user/delete/{{$user->id}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                     @endforeach
@@ -92,24 +102,23 @@
             </div>
             <div class="modal-body">
                 <div class="container-fluid px-4">
-                    <form action="/user/update/{{$user->id}}" method="POST" enctype="multipart/form-data" class="mr-8">
+                    <form action="{{route('update.id')}}" method="POST" enctype="multipart/form-data" class="mr-8">
                         @csrf
+                        <input type="hidden" class="form-control" name="id" id="edit-id"><br>
                         <div class="form-group">
                             <label for="name">Nama</label>
-                            <input type="text" class="form-control" required="required" name="name" value="{{$user->name}}"><br>
+                            <input type="text" class="form-control" name="name" id="edit-name"><br>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="text" class="form-control" required="required" name="email" value="{{$user->email}}"><br>
+                            <input type="text" class="form-control" name="email" id="edit-email"><br>
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" encrypt="sha1" pattern=".{6,}" class="form-control" required="required"
-                                name="password" value="{{$user->password}}"><br>
+                            <input type="password" encrypt="sha1" pattern=".{6,}" class="form-control" name="password" id="edit-password"><br>
                         </div>
                         <label for="roles">Roles</label>
-                        <select class="form-select" name="roles">
-                            <option value="{{$user->roles}}"></option>
+                        <select class="form-select" name="roles"  id="edit-roles">
                             <option value="Administrator">Admin</option>
                             <option value="Kasir">Kasir</option>
                             <option value="Barang">Barang</option>
