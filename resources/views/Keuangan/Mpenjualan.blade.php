@@ -1,4 +1,4 @@
-@extends('layouts/main')
+ @extends('layouts/main')
 @section('konten')
 <div class="container-fluid px-4">
     <ol class="breadcrumb mb-4">
@@ -20,8 +20,8 @@
                                 <h6>Code</h6>
                             </label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control form-control-sm" name="id_barang" id="pilih_id" onkeyup="autofill()"
-                                    placeholder="code">
+                                <input type="text" class="form-control form-control-sm" name="id_barang" id="id_barang"
+                                     onkeyup="autofil()" placeholder="code">
                             </div>
                         </div>
 
@@ -30,7 +30,7 @@
                                 <h6>Nama</h6>
                             </label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control form-control-sm" name="name" id="pilih_name"
+                                <input type="text" class="form-control form-control-sm" name="name" id="name"
                                     placeholder="nama" disabled>
                             </div>
                         </div>
@@ -40,7 +40,7 @@
                                 <h6>Merk</h6>
                             </label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control form-control-sm" name="merk" id="pilih_merk"
+                                <input type="text" class="form-control form-control-sm" name="merk" id="merk"
                                     placeholder="merk" disabled>
                             </div>
                         </div>
@@ -50,7 +50,7 @@
                                 <h6>Harga</h6>
                             </label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control form-control-sm" name="harga_jual" id="pilih-harga_jual"
+                                <input type="text" class="form-control form-control-sm" name="harga_jual" id="harga_jual"
                                     placeholder="harga" disabled>
                             </div>
                         </div>
