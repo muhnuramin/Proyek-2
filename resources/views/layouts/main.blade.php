@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <title>SI Pengolahan Toko</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css">
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <link href="{{asset('https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css')}}" rel="stylesheet" />
         <link href="{{asset('css/styles.css')}}" rel="stylesheet" />
@@ -176,18 +177,54 @@
         </script>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
+        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script type="text/javascript">
-            function autofil(){
-                var id = $("#id_barang").val();
+        {{-- <script type="text/javascript">
+            $(document).ready(function(){
+                console.log('test');
                 $.ajax({
-                    url : 'autofill-ajax.php',
-                    data : 'id='+id,
-                }).success(function(data){
-                    alert(id);
+                    type:'get',
+                    url : '{!!URL::to('findCustomers')!!}',
+                    success:function(response){
+                        console.log(response);
+                    //convert array to object
+                    var barangArray = response;
+                    var dataBarang = {};
+                    for (var i=0; i<barangArray.length; i++){
+                        dataBarang[barangArray[i].id_barang] =null;
+                    }
+                    console.log("dataBarang");
+                    console.log(dataBarang);
+                    //materializecss'
+                    $('input#id_barang').autocomplete({
+                        data: dataBarang,
+                    });
+                    //end
+                    }
+                })
+            });
+            // function autofil(){
+            //     var id = $("#id_barang").val();
+                
+            // }
+        </script> --}}
+        <script type="text/javascript">
+            var value_kode = document.getElementById('id_barang').value;
+            $("#id_barang").keyup(function(){
+                console.log("id_barang = "+$('#id_barang').val())
+                $.ajax({
+                url: 'http://127.0.0.1:8000/api/barang/'+$('#id_barang').val(),
+                data: {id_barang:value_kode},
+                success: function(data){
+                    $('#name').val(data['name']);
+                    $('#merk').val(data['merk']);
+                    $('#harga_jual').val(data['harga_jual']);
+                    console.log(data['name']);
+                }
                 });
-            }
+            })
+           
         </script>
     </body>
 </html>

@@ -41,8 +41,9 @@ Route::get('/pembelian',[pembelianController::class,'index']);
 Route::get('/laporan',[laporanController::class,'index']);
 Route::post('/laporan',[laporanController::class,'refresh']);
 
-Route::get('/findcustomers', [penjualanController::class, 'getCustomer']);
+Route::get('/findCustomers', [penjualanController::class, 'getCustomer']);
 
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/api/barang/{id}',[penjualanController::class,'getBarangId']);

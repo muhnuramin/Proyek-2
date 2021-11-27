@@ -21,7 +21,7 @@
                             </label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control form-control-sm" name="id_barang" id="id_barang"
-                                     onkeyup="autofil()" placeholder="code">
+                                      placeholder="code">
                             </div>
                         </div>
 
