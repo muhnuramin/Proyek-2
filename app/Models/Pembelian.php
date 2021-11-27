@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Pembelian extends Model
 {
     use HasFactory;
+    protected $primaryKey='id_pembelian';
+    protected $guarded=['id_pembelian'];
 }

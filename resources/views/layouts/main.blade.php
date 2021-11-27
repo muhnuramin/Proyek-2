@@ -27,7 +27,7 @@
             <!-- Navbar-->
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i>{{ Auth::user()->name }}</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
@@ -49,39 +49,39 @@
                         <div class="nav">
                             @can('manage-all')
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="/">
+                            <a class="nav-link hover {{Request::is('home') ? 'aktif' : ''}}" href="/">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
                             @endcan
                             <div class="sb-sidenav-menu-heading">Manage</div>
                             @can('manage-barang')
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            <a class="nav-link collapsed hover {{Request::is('barang') ? 'aktif' : ''}}" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-box-open"></i></div>
                                 Barang
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="/barang">Data Barang</a>
+                                    <a class="nav-link hover {{Request::is('barang') ? 'aktif' : ''}}" href="/barang">Data Barang</a>
                                 </nav>
                             </div>
                             @endcan
                             @can('manage-keuangan')
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                            <a class="nav-link collapsed hover {{Request::is('penjualan') ? 'aktif' : ''}} {{Request::is('pembelian') ? 'aktif' : ''}} {{Request::is('laporan') ? 'aktif' : ''}}" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-money-bill-wave-alt"></i></div>
                                 Keuangan
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link collapsed" href="/penjualan">
+                                    <a class="nav-link collapsed hover {{Request::is('penjualan') ? 'aktif' : ''}}" href="/penjualan">
                                         Penjualan
                                     </a>
-                                    <a class="nav-link collapsed" href="/pembelian">
+                                    <a class="nav-link collapsed hover {{Request::is('pembelian') ? 'aktif' : ''}}" href="/pembelian">
                                         Pembelian
                                     </a>
-                                    <a class="nav-link collapsed" href="/laporan">
+                                    <a class="nav-link collapsed hover {{Request::is('laporan') ? 'aktif' : ''}}" href="/laporan">
                                         Data Keuangan
                                     </a>
                                 </nav>
@@ -89,7 +89,7 @@
                             @endcan
                             @can('manage-all')
                             <div class="sb-sidenav-menu-heading">Addons</div>
-                            <a class="nav-link" href="/user">
+                            <a class="nav-link hover {{Request::is('user') ? 'aktif' : ''}}" href="/user">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                                 User
                             </a>
@@ -98,7 +98,7 @@
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div><i class="fas fa-user-circle"></i>
-                        {{ Auth::user()->name }}
+                        {{ Auth::user()->roles }}
                     </div>
                 </nav>
             </div>
@@ -154,18 +154,18 @@
             });
         </script>
         <script>
-            $(document).on('click','#btn-pilih-user',function(){
+            $(document).on('click','#btn-pilih-barang',function(){
                 let id_barang=$(this).data('id_barang');
                 let name=$(this).data('name');
                 let merk=$(this).data('merk');
                 let harga_jual=$(this).data('harga_jual');
                 let stock=$(this).data('stock');
                 
-                $('#pilih-id_barang').val(id_barang);
-                $('#pilih-name').val(name);
-                $('#pilih-merk').val(merk);
-                $('#pilih-harga_jual').val(harga_jual);
-                $('#pilih-stock').val(stock);
+                $('#id_barang').val(id_barang);
+                $('#name').val(name);
+                $('#merk').val(merk);
+                $('#harga').val(harga_jual);
+                $('#stock').val(stock);
             });
         </script>
         <script>

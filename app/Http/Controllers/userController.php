@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Hash;
 use Session;
 class userController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(){
         $users=User::all();
         return view('user.Muser',['User'=>$users]);

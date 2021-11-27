@@ -12620,7 +12620,7 @@ body {
 }
 
 .sb-sidenav-dark .sb-sidenav-menu .nav-link:hover {
-    color: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
 }
 
 .sb-sidenav-dark .sb-sidenav-menu .nav-link.active {
@@ -12632,7 +12632,7 @@ body {
 }
 
 .sb-sidenav-dark .sb-sidenav-footer {
-    background-color: #fda788;
+    background-color: #ff8a60;
 }
 
 .sb-sidenav-footer {

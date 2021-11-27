@@ -17,23 +17,25 @@ use App\Http\Controllers\laporanController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/home',[mainController::class,'index']);
-Route::get('/user',[userController::class,'index']);
+Route::get('/home',[mainController::class,'index'])->name('home');
+Route::get('/user',[userController::class,'index'])->name('user');
 Route::post('/user/create',[userController::class,'create']);
 Route::post('/user/update',[userController::class,'update'])->name('update.id');
 Route::get('/user/delete/{id}',[userController::class,'delete']);
 
-Route::get('/barang',[barangController::class,'index']);
+Route::get('/barang',[barangController::class,'index'])->name('barang');
 Route::post('/item/create',[barangController::class,'create']);
 Route::post('/item/update',[barangController::class,'update'])->name('update');
 Route::get('/item/delete/{id_barang}',[barangController::class,'delete']);
 
-Route::get('/penjualan',[penjualanController::class,'index']);
-Route::get('/pembelian/autofill',[penjualanController::class,'index'])->name('autofill');
+Route::get('/penjualan',[penjualanController::class,'index'])->name('penjualan');
+Route::post('/penjualan/create',[penjualanController::class,'create'])->name('tambah-penjualan');
+Route::get('/penjualan/autofill',[penjualanController::class,'autocomplete'])->name('autocomplete');
+Route::get('/penjualan/delete/{id_penjualan}',[penjualanController::class,'delete']);
 
-Route::get('/pembelian',[pembelianController::class,'index']);
+Route::get('/pembelian',[pembelianController::class,'index'])->name('pembelian');
 
-Route::get('/laporan',[laporanController::class,'index']);
+Route::get('/laporan',[laporanController::class,'index'])->name('laporan');
 Route::post('/laporan',[laporanController::class,'refresh']);
 
 Auth::routes();

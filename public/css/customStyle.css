@@ -23,3 +23,15 @@
     text-align: right;
     padding-right: 2px;
 }
+
+.hover:hover {
+    background-color: #fcc9b7;
+    border-radius: 10px;
+    margin: 1px;
+}
+
+.aktif {
+    background-color: #fcc9b7;
+    border-radius: 10px;
+    margin-left: 2px;
+}

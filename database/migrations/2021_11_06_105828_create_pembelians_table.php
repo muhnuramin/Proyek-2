@@ -16,6 +16,7 @@ class CreatePembeliansTable extends Migration
         Schema::create('pembelians', function (Blueprint $table) {
             $table->increments('id_pembelian');
             $table->foreignId('id_barang');
+            $table->integer('harga');
             $table->integer('qty');
             $table->integer('subtotal');
             $table->timestamps();
