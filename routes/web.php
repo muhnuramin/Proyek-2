@@ -32,6 +32,7 @@ Route::get('/penjualan',[penjualanController::class,'index'])->name('penjualan')
 Route::post('/penjualan/create',[penjualanController::class,'create'])->name('tambah-penjualan');
 Route::get('/penjualan/autofill',[penjualanController::class,'autocomplete'])->name('autocomplete');
 Route::get('/penjualan/delete/{id_penjualan}',[penjualanController::class,'delete']);
+Route::get('/penjualan/clear',[penjualanController::class,'clear']);
 
 Route::get('/pembelian',[pembelianController::class,'index'])->name('pembelian');
 

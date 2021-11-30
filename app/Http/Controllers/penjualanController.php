@@ -23,6 +23,7 @@ class penjualanController extends Controller
     }
 
     public function create(Request $request){
+        
         Penjualan::create([
             'id_barang'=>$request->id_barang,
             'name'=>$request->name,
@@ -31,12 +32,18 @@ class penjualanController extends Controller
             'qty'=>$qty=$request->qty,
             'subtotal'=>$harga*$qty
         ]);
+        
         return redirect('/penjualan');
     }
 
     public function delete($id_penjualan){
         $penjualans=Penjualan::find($id_penjualan);
         $penjualans->delete();
+        return redirect('/penjualan');
+    }
+
+    public function clear(){
+        $penjualans=Penjualan::truncate();
         return redirect('/penjualan');
     }
 

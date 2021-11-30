@@ -169,6 +169,27 @@
             });
         </script>
         <script>
+            // $(document).ready(function(){
+            //     $('#harga,#bayar').keyup(
+            //         function(){
+            //             var harga=$("#harga").val();
+            //             var bayar=$("#bayar").val();
+            //             var kembali=harga-bayar;
+            //             $('#kembali').val(kembali);
+            //         }
+            //     )
+            // });
+            let harga=10000;
+            $('#bayar').keyup(
+                function() {
+                    let bayar=$('#bayar').val();
+                    let total=parseFloat(harga)-parseFloat(bayar);
+                    
+                    $('#kembali').val(total);
+                }
+            );
+        </script>
+        <script>
             @if(Session::has('pesan'))
                 toastr.{{Session::get('alert')}}("{{Session::get('pesan')}}");
             @endif

@@ -51,7 +51,7 @@
                             </label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control form-control-sm" name="harga"
-                                    id="harga" placeholder="harga">
+                                    id="harga" placeholder="harga" readonly>
                             </div>
                         </div>
 
@@ -104,14 +104,44 @@
                                 @endforeach
                         </tbody>
                     </table>
-                    <div class="harga">
-                        <b>Rp.</b>1000000
+                    <div class="harga" id="total">
+                    
+                    
+                        <div class="form-group row mt-2">
+                            <label for="harga" class="col-sm-3 col-form-label">
+                                <h6>Dibayar</h6>
+                            </label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control form-control-sm" name="harga" id="harga"
+                                    value=10000 readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label for="bayar" class="col-sm-3 col-form-label">
+                                <h6>Diterima</h6>
+                            </label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control form-control-sm" name="bayar" id="bayar"
+                                    placeholder="0">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label for="kembali" class="col-sm-3 col-form-label">
+                                <h6>Kembali</h6>
+                            </label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control form-control-sm" name="kembali" id="kembali"
+                                    value="0" readonly>
+                            </div>
+                        </div>
                     </div>
-                    <button type="button" class="btn btn-warning mb-2"><i class="fas fa-file-pdf"></i>&nbsp;Cetak
-                        Nota</button>
-                    <button type="button" class="btn btn-warning mb-2"><i class="fas fa-save"></i>&nbsp;Simpan
+                    <button type="button" class="btn btn-warning mb-2"><i class="fas fa-print"></i>
                         </button>
-                    <button type="button" class="btn btn-danger mb-2"><i class="fas fa-eraser"></i>&nbsp;Clear</button>
+                    <button type="button" class="btn btn-warning mb-2"><i class="fas fa-save"></i>
+                        </button>
+                    <a href="penjualan/clear" class="btn btn-danger mb-2"><i class="fas fa-eraser"></i></a>
                 </div>
             </div>
         </div>
@@ -160,7 +190,6 @@
                         </tbody>
                     </table>
                 </div>
-
             </div>
         </div>
     </div>

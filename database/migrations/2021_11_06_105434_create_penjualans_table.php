@@ -19,6 +19,7 @@ class CreatePenjualansTable extends Migration
             $table->integer('harga');
             $table->integer('qty');
             $table->integer('subtotal');
+            $table->integer('laba');
             $table->timestamps();
         });
     }
