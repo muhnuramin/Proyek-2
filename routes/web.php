@@ -42,3 +42,5 @@ Route::post('/laporan',[laporanController::class,'refresh']);
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/api/barang/{id}',[penjualanController::class,'getBarangId']);

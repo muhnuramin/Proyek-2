@@ -23,15 +23,20 @@ class penjualanController extends Controller
     }
 
     public function create(Request $request){
-        
+        $harga_beli=$request->hb;
         Penjualan::create([
             'id_barang'=>$request->id_barang,
             'name'=>$request->name,
             'merk'=>$request->merk,
             'harga'=>$harga=$request->harga,
+            'laba'=>$harga-$harga_beli,
             'qty'=>$qty=$request->qty,
-            'subtotal'=>$harga*$qty
+            'subtotal'=>$harga*$qty,
+            
         ]);
+        $barangs=Barang::find($request->id_barang);
+        $barangs->stock-=$qty;
+        $barangs->update();
         
         return redirect('/penjualan');
     }
@@ -45,6 +50,12 @@ class penjualanController extends Controller
     public function clear(){
         $penjualans=Penjualan::truncate();
         return redirect('/penjualan');
+    }
+
+    public function getBarangId($id){
+        $data = Barang::where('id_barang','=',$id)
+                    ->first();
+        return response()->json($data);
     }
 
 }

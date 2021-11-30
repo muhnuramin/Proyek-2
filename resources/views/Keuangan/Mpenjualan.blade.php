@@ -55,6 +55,12 @@
                             </div>
                         </div>
 
+                            <div class="col-sm-9 d-none">
+                                <input type="text" class="form-control form-control-sm" name="hb" id="hb"
+                                    placeholder="harga beli">
+                            </div>
+                        
+
                         <div class="form-group row mt-2">
                             <label for="jumlah" class="col-sm-3 col-form-label">
                                 <h6>QTY</h6>
@@ -105,15 +111,14 @@
                         </tbody>
                     </table>
                     <div class="harga" id="total">
-                    
-                    
+
                         <div class="form-group row mt-2">
                             <label for="harga" class="col-sm-3 col-form-label">
                                 <h6>Dibayar</h6>
                             </label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control form-control-sm" name="harga" id="harga"
-                                    value=10000 readonly>
+                                <input type="text" class="form-control form-control-sm" name="dibayar" id="dibayar"
+                                    value='10000' readonly/>
                             </div>
                         </div>
 
@@ -165,7 +170,8 @@
                                 <th>Code</th>
                                 <th>Nama</th>
                                 <th>Merk</th>
-                                <th>Harga</th>
+                                <th>Harga Jual</th>
+                                <th>Harga Beli</th>
                                 <th>Jumlah</th>
                                 <th>Aksi</th>
                             </tr>
@@ -178,13 +184,17 @@
                                 <td>{{$barang->name}}</td>
                                 <td>{{$barang->merk}}</td>
                                 <td>{{$barang->harga_jual}}</td>
+                                <td>{{$barang->harga_beli}}</td>
                                 <td>{{$barang->stock}}</td>
                                 <td><button type="button" class="btn btn-success" id="btn-pilih-barang"
                                         data-bs-dismiss="modal" aria-label="Close"
-                                        data-id_barang="{{$barang->id_barang}}" data-name="{{$barang->name}}"
-                                        data-merk="{{$barang->merk}}" data-harga_jual="{{$barang->harga_jual}}"
-                                        data-stock="{{$barang->stock}}"><i class="far fa-check-circle"></i>
-                                        Pilih</button>
+                                        data-id_barang="{{$barang->id_barang}}" 
+                                        data-name="{{$barang->name}}"
+                                        data-merk="{{$barang->merk}}" 
+                                        data-harga_jual="{{$barang->harga_jual}}"
+                                        data-harga_beli="{{$barang->harga_beli}}"
+                                        data-stock="{{$barang->stock}}">
+                                        <i class="far fa-check-circle"></i>Pilih</button>
                             </tr>
                             @endforeach
                         </tbody>

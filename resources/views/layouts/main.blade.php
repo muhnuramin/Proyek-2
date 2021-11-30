@@ -159,27 +159,19 @@
                 let name=$(this).data('name');
                 let merk=$(this).data('merk');
                 let harga_jual=$(this).data('harga_jual');
+                let harga_beli=$(this).data('harga_beli');
                 let stock=$(this).data('stock');
                 
                 $('#id_barang').val(id_barang);
                 $('#name').val(name);
                 $('#merk').val(merk);
                 $('#harga').val(harga_jual);
+                $('#hb').val(harga_beli);
                 $('#stock').val(stock);
             });
         </script>
         <script>
-            // $(document).ready(function(){
-            //     $('#harga,#bayar').keyup(
-            //         function(){
-            //             var harga=$("#harga").val();
-            //             var bayar=$("#bayar").val();
-            //             var kembali=harga-bayar;
-            //             $('#kembali').val(kembali);
-            //         }
-            //     )
-            // });
-            let harga=10000;
+            let harga=document.getElementById('dibayar').value;
             $('#bayar').keyup(
                 function() {
                     let bayar=$('#bayar').val();
@@ -188,6 +180,23 @@
                     $('#kembali').val(total);
                 }
             );
+        </script>
+        <script>
+            var value_kode = document.getElementById('id_barang').value;
+            $("#id_barang").keyup(function(){
+                console.log("id_barang = "+$('#id_barang').val())
+                $.ajax({
+                url: 'http://127.0.0.1:8000/api/barang/'+$('#id_barang').val(),
+                data: {id_barang:value_kode},
+                success: function(data){
+                    $('#name').val(data['name']);
+                    $('#merk').val(data['merk']);
+                    $('#harga').val(data['harga_jual']);
+                    $('#hb').val(data['harga_beli']);
+                    console.log(data['name']);
+                }
+                });
+            })
         </script>
         <script>
             @if(Session::has('pesan'))
