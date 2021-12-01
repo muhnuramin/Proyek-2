@@ -198,6 +198,25 @@
                 });
             })
         </script>
+            $
+        <script>
+            // var total = document.getElementById('totalharga').value;
+                // $(document).ready(function(){
+                //     $('tr').each(function(){
+                //         var totalsub=0;
+                //         $(this).find('.subtotal').each(function(){
+                //             var sub=$(this).text();
+                //             if(sub.length!==0){
+                //                 totalsub+=parseFloat(sub);
+                                
+                //             }
+                //         });
+                //         console.log(totalsub);
+                //     });
+                // });
+            
+        </script>
+        
         <script>
             @if(Session::has('pesan'))
                 toastr.{{Session::get('alert')}}("{{Session::get('pesan')}}");

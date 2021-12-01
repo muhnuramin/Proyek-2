@@ -102,7 +102,7 @@
                                         <td>{{$penjualan->Barang->name}}</td>
                                         <td>{{$penjualan->harga}}</td>
                                         <td>{{$penjualan->qty}}</td>
-                                        <td>{{$total=$penjualan->subtotal}}</td>
+                                        <td class="subtotal">{{$total=$penjualan->subtotal}}</td>
                                         <td>
                                             <a href="penjualan/delete/{{$penjualan->id_penjualan}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                         </td>
@@ -111,14 +111,13 @@
                         </tbody>
                     </table>
                     <div class="harga" id="total">
-
                         <div class="form-group row mt-2">
-                            <label for="harga" class="col-sm-3 col-form-label">
+                            <label for="harga" class="col-sm-3 col-form-label" id="hargatotal">
                                 <h6>Dibayar</h6>
                             </label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control form-control-sm" name="dibayar" id="dibayar"
-                                    value='10000' readonly/>
+                                    value='{{$count}}' readonly/>
                             </div>
                         </div>
 

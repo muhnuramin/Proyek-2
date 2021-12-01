@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Barang;
 use App\Models\Penjualan;
+use Illuminate\Support\Facades\DB;
 
 class penjualanController extends Controller
 {
@@ -15,11 +16,16 @@ class penjualanController extends Controller
     public function index(){
         $barangs=Barang::all();
         $penjualans=Penjualan::all();
+        $count = \DB::table('penjualans')->sum('subtotal');
         return view ('Keuangan.Mpenjualan',
         [
         'Barang'=>$barangs,
-        'Penjualan'=>$penjualans
+        'Penjualan'=>$penjualans,
+        'count'=>$count
         ]);
+        foreach($penjualans as $p){
+            $count = \DB::table('penjualans')->sum('subtotal');
+        }
     }
 
     public function create(Request $request){
@@ -32,6 +38,7 @@ class penjualanController extends Controller
             'laba'=>$harga-$harga_beli,
             'qty'=>$qty=$request->qty,
             'subtotal'=>$harga*$qty,
+            // 'total'=>
             
         ]);
         $barangs=Barang::find($request->id_barang);
@@ -57,5 +64,4 @@ class penjualanController extends Controller
                     ->first();
         return response()->json($data);
     }
-
 }
