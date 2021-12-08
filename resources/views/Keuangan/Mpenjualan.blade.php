@@ -118,7 +118,7 @@
                             </label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control form-control-sm" name="dibayar" id="dibayar"
-                                    value='10000' readonly/>
+                                    value='{{$count}}' readonly/>
                             </div>
                         </div>
 

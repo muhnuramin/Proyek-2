@@ -13,14 +13,15 @@
                     Pembelian
                 </div>
                 <div class="container">
-                    <form>
+                    <form action="{{route('tambah-pembelian')}}" method="POST" enctype="multipart/form-data">
+                        @csrf
                         <div class="form-group row mt-2">
-                            <label for="id" class="col-sm-3 col-form-label">
+                            <label for="id_barang" class="col-sm-3 col-form-label">
                                 <h6>Code</h6>
                             </label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control form-control-sm" id="id" onkeyup="autofill()"
-                                    placeholder="code">
+                                <input type="text" class="form-control form-control-sm" name="id_barang" id="id_barang"
+                                    onkeyup="autocomplete()" placeholder="code">
                             </div>
                         </div>
 
@@ -29,19 +30,35 @@
                                 <h6>Nama</h6>
                             </label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control form-control-sm" id="name"
-                                    placeholder="nama" disabled>
+                                <input type="text" class="form-control form-control-sm" name="name" id="name"
+                                    placeholder="nama" >
                             </div>
                         </div>
 
                         <div class="form-group row mt-2">
-                            <label for="harga_jual" class="col-sm-3 col-form-label">
+                            <label for="merk" class="col-sm-3 col-form-label">
+                                <h6>Merk</h6>
+                            </label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control form-control-sm" name="merk" id="merk"
+                                    placeholder="merk" >
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row mt-2">
+                            <label for="harga" class="col-sm-3 col-form-label">
                                 <h6>Harga</h6>
                             </label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control form-control-sm" id="harga_jual"
-                                    placeholder="harga" disabled>
+                                <input type="text" class="form-control form-control-sm" name="harga" id="harga"
+                                    placeholder="harga" >
                             </div>
+                        </div>
+
+                        <div class="col-sm-9 d-none">
+                            <input type="text" class="form-control form-control-sm" name="hb" id="hb"
+                                placeholder="harga beli">
                         </div>
 
                         <div class="form-group row mt-2">
@@ -49,14 +66,16 @@
                                 <h6>QTY</h6>
                             </label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control form-control-sm" id="jumlah"
+                                <input type="text" class="form-control form-control-sm" name="qty" id="qty"
                                     placeholder="QTY">
                             </div>
                         </div>
 
-                        <a href="#" class="btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="#pilih"><i class="fas fa-box-open"></i>&nbsp;Pilih</a>
-                        <button type="button" class="btn btn-primary mb-2"><i class="fas fa-shopping-cart"></i>&nbsp;Tambah Pembelian</button>
-                    </form>
+                        <a href="#" class="btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="#pilih"><i
+                                class="fas fa-box-open"></i>&nbsp;Pilih</a>
+                        <button type="submit" class="btn btn-primary mb-2"><i
+                                class="fas fa-shopping-cart"></i>&nbsp;Tambah Pembelian</button>
+                        </form>
                 </div>
             </div>
         </div>
@@ -79,22 +98,60 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
+                            @foreach ($pembelian as $pembelian)
+                                    <tr>
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{$pembelian->Barang->name}}</td>
+                                        <td>{{$pembelian->harga}}</td>
+                                        <td>{{$pembelian->qty}}</td>
+                                        <td>{{$total=$pembelian->subtotal}}</td>
+                                        <td>
+                                            <a href="pembelian/delete/{{$pembelian->id_pembelian}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                            @endforeach
                         </tbody>
                     </table>
-                    <div class="harga">
-                        <b>Rp.</b>1000000
+                    <div class="harga" id="total">
+                        <div class="form-group row mt-2">
+                            <label for="harga" class="col-sm-3 col-form-label">
+                                <h6>Dibayar</h6>
+                            </label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control form-control-sm" name="dibayar" id="dibayar"
+                                    value='{{$count}}' readonly />
+                            </div>
+                        </div>
+                        <div class="form-group row mt-2">
+                            <label for="bayar" class="col-sm-3 col-form-label">
+                                <h6>Diterima</h6>
+                            </label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control form-control-sm" name="bayar" id="bayar"
+                                    placeholder="0">
+                            </div>
+                        </div>
+                        <div class="form-group row mt-2">
+                            <label for="kembali" class="col-sm-3 col-form-label">
+                                <h6>Kembali</h6>
+                            </label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control form-control-sm" name="kembali" id="kembali"
+                                    value="0" readonly>
+                            </div>
+                        </div>
                     </div>
-                    <button type="button" class="btn btn-warning mb-2"><i class="fas fa-file-pdf"></i>&nbsp;Cetak Nota</button>
-                    <button type="button" class="btn btn-warning mb-2"><i class="fas fa-save"></i>&nbsp;Simpan Transaksi</button>
-                    <button type="button" class="btn btn-danger mb-2"><i class="fas fa-eraser"></i>&nbsp;Clear</button>
+                    <button type="button" class="btn btn-warning mb-2"><i class="fas fa-file-pdf"></i>&nbsp;</button>
+                    <button type="button" class="btn btn-warning mb-2"><i class="fas fa-save"></i>&nbsp;</button>
+                    <a href="pembelian/clear" class="btn btn-danger mb-2"><i class="fas fa-eraser"></i></a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 {{-- Modal Tambah item --}}
-<div class="modal fade bd-example-modal-lg" id="pilih" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade bd-example-modal-lg" id="pilih" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -102,9 +159,40 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                
-                </div>
-            
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Code</th>
+                            <th>Nama</th>
+                            <th>Merk</th>
+                            <th>Harga Jual</th>
+                            <th>Harga Beli</th>
+                            <th>Jumlah</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($Barang as $barang)
+                        <tr>
+                            <td>{{$loop->iteration}}</td>
+                            <td>{{$barang->id_barang}}</td>
+                            <td>{{$barang->name}}</td>
+                            <td>{{$barang->merk}}</td>
+                            <td>{{$barang->harga_jual}}</td>
+                            <td>{{$barang->harga_beli}}</td>
+                            <td>{{$barang->stock}}</td>
+                            <td><button type="button" class="btn btn-success" id="btn-pilih-barang"
+                                    data-bs-dismiss="modal" aria-label="Close" data-id_barang="{{$barang->id_barang}}"
+                                    data-name="{{$barang->name}}" data-merk="{{$barang->merk}}"
+                                    data-harga_jual="{{$barang->harga_jual}}" data-harga_beli="{{$barang->harga_beli}}"
+                                    data-stock="{{$barang->stock}}">
+                                    <i class="far fa-check-circle"></i>Pilih</button>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

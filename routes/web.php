@@ -35,9 +35,14 @@ Route::get('/penjualan/delete/{id_penjualan}',[penjualanController::class,'delet
 Route::get('/penjualan/clear',[penjualanController::class,'clear']);
 
 Route::get('/pembelian',[pembelianController::class,'index'])->name('pembelian');
+Route::post('/pembelian/create',[pembelianController::class,'create'])->name('tambah-pembelian');
+Route::get('/pembelian/delete/{id_pembelian}',[pembelianController::class,'delete']);
+Route::get('/pembelian/clear',[pembelianController::class,'clear']);
 
 Route::get('/laporan',[laporanController::class,'index'])->name('laporan');
 Route::post('/laporan',[laporanController::class,'refresh']);
+Route::get('/laporan/data/{awal}/{akhir}',[laporanController::class,'data']->name('laporan.data'));
+
 
 Auth::routes();
 

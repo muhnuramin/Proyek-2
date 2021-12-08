@@ -175,7 +175,7 @@
             $('#bayar').keyup(
                 function() {
                     let bayar=$('#bayar').val();
-                    let total=parseFloat(harga)-parseFloat(bayar);
+                    let total=parseFloat(bayar)-parseFloat(harga);
                     
                     $('#kembali').val(total);
                 }

@@ -15,15 +15,19 @@ class penjualanController extends Controller
     public function index(){
         $barangs=Barang::all();
         $penjualans=Penjualan::all();
+        $count = \DB::table('penjualans')->sum('subtotal');
+
         return view ('Keuangan.Mpenjualan',
         [
         'Barang'=>$barangs,
-        'Penjualan'=>$penjualans
+        'Penjualan'=>$penjualans,
+        'count'=>$count
         ]);
     }
 
     public function create(Request $request){
         $harga_beli=$request->hb;
+        
         Penjualan::create([
             'id_barang'=>$request->id_barang,
             'name'=>$request->name,

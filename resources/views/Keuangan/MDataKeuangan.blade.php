@@ -22,6 +22,11 @@
                         <th>Pendapatan</th>
                     </tr>
                 </thead>
+                <tbody>
+                    <tr>
+                        <th>{{$tanggalAwal}}</th>
+                    </tr>
+                </tbody>
             </table>
         </div>
     </div>
