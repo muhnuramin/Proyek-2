@@ -40,8 +40,8 @@ Route::get('/pembelian/delete/{id_pembelian}',[pembelianController::class,'delet
 Route::get('/pembelian/clear',[pembelianController::class,'clear']);
 
 Route::get('/laporan',[laporanController::class,'index'])->name('laporan');
-Route::post('/laporan',[laporanController::class,'refresh']);
-Route::get('/laporan/data/{awal}/{akhir}',[laporanController::class,'data']->name('laporan.data'));
+// Route::post('/laporan',[laporanController::class,'refresh']);
+// Route::get('/laporan/data/{awal}/{akhir}',[laporanController::class,'data']->name('laporan.data'));
 
 
 Auth::routes();
