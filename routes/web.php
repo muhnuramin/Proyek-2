@@ -24,6 +24,8 @@ Route::post('/user/update',[userController::class,'update'])->name('update.id');
 Route::get('/user/delete/{id}',[userController::class,'delete']);
 
 Route::get('/barang',[barangController::class,'index'])->name('barang');
+Route::get('/barang/cetak_pdf', [barangController::class,'cetak_pdf'])->name('pdf');
+
 Route::post('/item/create',[barangController::class,'create']);
 Route::post('/item/update',[barangController::class,'update'])->name('update');
 Route::get('/item/delete/{id_barang}',[barangController::class,'delete']);
@@ -42,6 +44,7 @@ Route::get('/pembelian/clear',[pembelianController::class,'clear']);
 Route::get('/laporan',[laporanController::class,'index'])->name('laporan');
 // Route::post('/laporan',[laporanController::class,'refresh']);
 // Route::get('/laporan/data/{awal}/{akhir}',[laporanController::class,'data']->name('laporan.data'));
+
 
 
 Auth::routes();

@@ -5,7 +5,7 @@
         <li class="breadcrumb-item active"><i class="fas fa-tachometer-alt"></i>&nbsp;Dashboard&nbsp; / &nbsp;Data Barang</li>
     </ol>
     <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addItem"><i class="fa fa-plus"></i>&nbsp;Add Item</a>
-    <button type="button" class="btn btn-success"><i class="fas fa-file-pdf"></i>&nbsp;Export PDF</button>
+    <a href="/barang/cetak_pdf"  target="_blank" type="button" class="btn btn-success"><i class="fas fa-file-pdf"></i>&nbsp;Export PDF</a>
     <div class="card mb-4 mt-2">
         <div class="card-body">
             <table id="datatablesSimple">

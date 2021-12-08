@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Barang;
+use PDF;
 
 class barangController extends Controller
 {
@@ -57,5 +58,11 @@ class barangController extends Controller
             'alert'=>'warning',
         );
         return redirect('/barang')->with($notifikasi);
+    }
+
+    public function cetak_pdf(){
+        $barang=Barang::all();
+        $pdf = PDF::loadview('barang.mbarang_pdf', ['barang'=>$barang]);
+        return  $pdf->stream();
     }
 }
