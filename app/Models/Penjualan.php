@@ -12,6 +12,6 @@ class Penjualan extends Model
     protected $guarded=['id_penjualan'];
 
     public function barang(){
-        return $this->hasOne(Barang::class,'id_barang','id_barang');
+        return $this->hasMany(Barang::class,'id_barang','id_barang');
     }
 }

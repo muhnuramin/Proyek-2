@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css">
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -202,6 +204,12 @@
             @if(Session::has('pesan'))
                 toastr.{{Session::get('alert')}}("{{Session::get('pesan')}}");
             @endif
+        </script>
+        <script>
+            const dataTable = new simpleDatatables.DataTable("#keuangan", {
+            searchable: false,
+            fixedHeight: true,
+            })
         </script>
     </body>
 </html>

@@ -16,7 +16,7 @@ class penjualanController extends Controller
         $barangs=Barang::all();
         $penjualans=Penjualan::all();
         $count = \DB::table('penjualans')->sum('subtotal');
-
+        
         return view ('Keuangan.Mpenjualan',
         [
         'Barang'=>$barangs,

@@ -22,9 +22,10 @@ class barangController extends Controller
         Barang::create([
             'name'=>$request->name,
             'merk'=>$request->merk,
-            'stock'=>$request->stock,
+            'stock'=>$stock=$request->stock,
             'harga_jual'=>$request->harga_jual,
-            'harga_beli'=>$request->harga_beli
+            'harga_beli'=>$harga_beli=$request->harga_beli,
+            'total_beli'=>$total_beli=$harga_beli*$stock,
         ]);
         $notifikasi=array(
             'pesan'=>'Barang berhasil ditambahkan',
@@ -41,6 +42,7 @@ class barangController extends Controller
         $barang->stock=$request->stock;
         $barang->harga_jual=$request->harga_jual;
         $barang->harga_beli=$request->harga_beli;
+        $barang->total_beli=$barang->stock*$barang->harga_beli;
         $barang->save();
         $notifikasi=array(
             'pesan'=>'Barang berhasil diedit',

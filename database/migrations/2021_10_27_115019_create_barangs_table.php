@@ -14,12 +14,13 @@ class CreateBarangsTable extends Migration
     public function up()
     {
         Schema::create('barangs', function (Blueprint $table) {
-            $table->increments('id_barang');
+            $table->id('id_barang');
             $table->string('name');
             $table->string('merk');
             $table->integer('stock');
             $table->integer('harga_jual');
             $table->integer('harga_beli');
+            $table->integer('total_beli');
             $table->timestamps();
         });
     }

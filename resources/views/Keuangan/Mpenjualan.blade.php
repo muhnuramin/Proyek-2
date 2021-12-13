@@ -99,7 +99,7 @@
                                 @foreach ($Penjualan as $penjualan)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
-                                        <td>{{$penjualan->Barang->name}}</td>
+                                        <td>{{$penjualan->barang()->first()->name}}</td>
                                         <td>{{$penjualan->harga}}</td>
                                         <td>{{$penjualan->qty}}</td>
                                         <td>{{$total=$penjualan->subtotal}}</td>

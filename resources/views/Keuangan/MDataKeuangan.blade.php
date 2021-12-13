@@ -12,20 +12,31 @@
     <a href="#" target="_blank" class="btn btn-success btn-xs btn-flat"><i class="fa fa-file-excel"></i> Export PDF</a>
     <div class="card mb-4 mt-2">
         <div class="card-body">
-            <table class="table">
+
+            <table id="keuangan" class="table">
                 <thead>
                     <tr>
-                        <th>No.</th>
-                        <th>Tanggal</th>
-                        <th>Penjualan</th>
-                        <th>Pembelian</th>
+                        <th>Name</th>
+                        <th>Total Penjualan</th>
+                        <th>Banyak penjualan</th>
+                        <th>Total Pengeluaran</th>
+                        <th>Banyak Pengeluaran</th>
                         <th>Pendapatan</th>
+                        <th>Tanggal</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($penjualans as $a)
                     <tr>
-                        <th>{{$tanggalAwal}}</th>
+                        <th>{{$a->barang()->first()->name}}</th>
+                        <th>{{$a->Total_Jual}}</th>
+                        <th>{{$a->Banyak_Jual}}</th>
+                        <th>{{$a->barang()->first()->total_beli}}</th>
+                        <th>{{$a->barang()->first()->stock}}</th>
+                        <th></th>
+                        <th>{{$a->Tanggal_Jual}}</th>
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

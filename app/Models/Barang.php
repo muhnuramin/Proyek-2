@@ -15,6 +15,9 @@ class Barang extends Model
         'stock',
         'harga_jual',
         'harga_beli',
+        'total_beli',
     ];
-
+    public function penjualan(){
+        return $this->belongsTo(Penjualan::class, 'id_barang','id_barang');
+    }
 }
