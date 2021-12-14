@@ -15,7 +15,9 @@ class CreateDetailPembeliansTable extends Migration
     {
         Schema::create('detail_pembelians', function (Blueprint $table) {
             $table->increments('id_detail_pembelian');
+            $table->integer('dibayar');
             $table->integer('subtotal');
+            $table->integer('kembali');
             $table->timestamps();
         });
     }

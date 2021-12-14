@@ -29,11 +29,11 @@
                     @foreach($penjualans as $a)
                     <tr>
                         <th>{{$a->barang()->first()->name}}</th>
-                        <th>{{$a->Total_Jual}}</th>
+                        <th>{{$jual=$a->Total_Jual}}</th>
                         <th>{{$a->Banyak_Jual}}</th>
-                        <th>{{$a->barang()->first()->total_beli}}</th>
+                        <th>{{$beli=$a->barang()->first()->total_beli}}</th>
                         <th>{{$a->barang()->first()->stock}}</th>
-                        <th></th>
+                        <th>{{$jual-$beli}}</th>
                         <th>{{$a->Tanggal_Jual}}</th>
                     </tr>
                     @endforeach
