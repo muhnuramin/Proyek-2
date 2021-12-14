@@ -16,25 +16,27 @@
             <table id="keuangan" class="table">
                 <thead>
                     <tr>
-                        <th>Name</th>
+                        <th>Tanggal</th>
+                        {{-- <th>Name</th>    --}}
                         <th>Total Penjualan</th>
                         <th>Banyak penjualan</th>
                         <th>Total Pengeluaran</th>
                         <th>Banyak Pengeluaran</th>
                         <th>Pendapatan</th>
-                        <th>Tanggal</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($penjualans as $a)
                     <tr>
-                        <th>{{$a->barang()->first()->name}}</th>
+                        {{-- <th>{{$a->barang()->first()->name}}</th> --}}
+                        <th>{{$a->Tanggal_Jual}}</th>
                         <th>{{$jual=$a->Total_Jual}}</th>
-                        <th>{{$a->Banyak_Jual}}</th>
+                        {{-- <th>{{$a->Banyak_Jual}}</th> --}}
                         <th>{{$beli=$a->barang()->first()->total_beli}}</th>
                         <th>{{$a->barang()->first()->stock}}</th>
                         <th>{{$jual-$beli}}</th>
-                        <th>{{$a->Tanggal_Jual}}</th>
+                        
                     </tr>
                     @endforeach
                 </tbody>

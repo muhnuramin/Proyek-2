@@ -128,7 +128,7 @@
                                 <h6>Diterima</h6>
                             </label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control form-control-sm" name="bayar" id="bayar"
+                                <input type="text" class="form-control form-control-sm" name="diterima" id="diterima"
                                     placeholder="0">
                             </div>
                         </div>
@@ -144,7 +144,8 @@
                         </div>
                     </div>
                     <a href="/penjualan/printnota" target="_blank" type="button" class="btn btn-warning mb-2"><i class="fas fa-print"></i></a>
-                    <button type="button" class="btn btn-warning mb-2"><i class="fas fa-save"></i></button>
+                    <button type="button" id="saveBtn" class="btn btn-warning mb-2"><i class="fas fa-save"></i>
+                        </button>
                     <a href="penjualan/clear" class="btn btn-danger mb-2"><i class="fas fa-eraser"></i></a>
                 </form>
                 </div>

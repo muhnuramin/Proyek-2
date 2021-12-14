@@ -16,6 +16,7 @@ class CreatePenjualansTable extends Migration
         Schema::create('penjualans', function (Blueprint $table) {
             $table->id('id_penjualan');
             $table->foreignId('id_barang')->constrained('barangs', 'id_barang');
+            $table->foreignId('id_transaksi')->nullable()->constrained('detail_penjualans', 'id_detail_penjualan');
             $table->integer('harga');
             $table->integer('qty');
             $table->integer('subtotal');

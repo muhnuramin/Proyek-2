@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Barang;
+use App\Models\Laporan;
 use PDF;
 
 class barangController extends Controller
@@ -19,7 +20,8 @@ class barangController extends Controller
     }
 
     public function create(Request $request){
-        Barang::create([
+        
+        $barang=Barang::create([
             'name'=>$request->name,
             'merk'=>$request->merk,
             'stock'=>$stock=$request->stock,
@@ -27,6 +29,13 @@ class barangController extends Controller
             'harga_beli'=>$harga_beli=$request->harga_beli,
             'total_beli'=>$total_beli=$harga_beli*$stock,
         ]);
+        // dd($barang);
+        Laporan::create([
+            'id_barang'=>$barang->id_barang,
+            'total_pembelian'=>$barang->total_beli,
+            'banyak_pembelian'=>$barang->stock,
+        ]);
+        
         $notifikasi=array(
             'pesan'=>'Barang berhasil ditambahkan',
             'alert'=>'success',
@@ -43,13 +52,31 @@ class barangController extends Controller
         $barang->harga_jual=$request->harga_jual;
         $barang->harga_beli=$request->harga_beli;
         $barang->total_beli=$barang->stock*$barang->harga_beli;
+        $laporan=Laporan::whereDate(
+            'created_at',
+            date('Y-m-d')
+        )->where(
+            'id_barang', $barang->id_barang
+        )->first();
+
+        if ($laporan) {
+            $laporan->update([
+            'total_pembelian'=>$barang->total_beli,
+            'banyak_pembelian'=>$barang->stock
+            ]);
+        }  else {
+            Laporan::create([
+                'id_barang'=>$barang->id_barang,
+                'total_pembelian'=>$barang->total_beli,
+                'banyak_pembelian'=>$barang->stock,
+            ]);
+        }
         $barang->save();
         $notifikasi=array(
             'pesan'=>'Barang berhasil diedit',
             'alert'=>'success',
         );
         return redirect('/barang')->with($notifikasi);
-        
     }
 
     public function delete($id){

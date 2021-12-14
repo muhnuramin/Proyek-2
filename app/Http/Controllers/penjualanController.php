@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Barang;
 use App\Models\Penjualan;
+use App\Models\detail_penjualan;
+use App\Models\Laporan;
 
 class penjualanController extends Controller
 {
@@ -14,8 +16,8 @@ class penjualanController extends Controller
     }
     public function index(){
         $barangs=Barang::all();
-        $penjualans=Penjualan::all();
-        $count = \DB::table('penjualans')->sum('subtotal');
+        $penjualans=Penjualan::whereNull("id_transaksi")->get();
+        $count = \DB::table('penjualans')->whereNull("id_transaksi")->sum('subtotal');
         
         return view ('Keuangan.Mpenjualan',
         [
@@ -23,12 +25,13 @@ class penjualanController extends Controller
         'Penjualan'=>$penjualans,
         'count'=>$count
         ]);
+
     }
 
     public function create(Request $request){
         $harga_beli=$request->hb;
         
-        Penjualan::create([
+        $penjualan=Penjualan::create([
             'id_barang'=>$request->id_barang,
             'name'=>$request->name,
             'merk'=>$request->merk,
@@ -38,6 +41,7 @@ class penjualanController extends Controller
             'subtotal'=>$harga*$qty,
             
         ]);
+        
         $barangs=Barang::find($request->id_barang);
         $barangs->stock-=$qty;
         $barangs->update();
@@ -52,7 +56,42 @@ class penjualanController extends Controller
     }
 
     public function clear(){
-        $penjualans=Penjualan::truncate();
+        Penjualan::whereNull("id_transaksi")->delete();
+        // $penjualans=Penjualan::truncate();
+        return redirect('/penjualan');
+    }
+
+    public function save(Request $request){
+        $detail_penjualan=detail_penjualan::create([
+            'subtotal'=>$request->subtotal,
+            'diterima'=>$request->diterima,
+            'kembali'=>$request->kembali,
+            
+        ]);
+        $penjualan=Penjualan::whereNull("id_transaksi");
+        $penjualan_data=$penjualan->get();
+        $laporan=Laporan::whereDate("created_at", date('Y-m-d')
+        );
+        // dd($penjualan_data);
+        foreach($penjualan_data as $l){
+            $laporan->updateOrCreate([
+                'id_barang'=>$l->id_barang,
+            ],
+            [
+                'total_penjualan'=>$l->subtotal,
+                'banyak_penjualan'=>$l->qty,
+            ]
+        );
+        }
+        // Laporan::create([
+        //     'id_barang'=>$penjualan->id_barang,
+        //     'total_penjualan'=>$penjualan->subtotal,
+        //     'banyak_penjualan'=>$penjualan->qty,
+        // ]);
+        // // $penjualans=Penjualan::truncate();
+        $penjualan->update([
+            'id_transaksi'=>$detail_penjualan->id_detail_penjualan,
+        ]);
         return redirect('/penjualan');
     }
 

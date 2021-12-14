@@ -48,6 +48,7 @@ Route::post('/penjualan/simpan',[detailPenjualanController::class,'create']);
 Route::post('/pembelian/simpan',[detailPembelianController::class,'create']);
 
 Route::get('/laporan',[laporanController::class,'index'])->name('laporan');
+Route::post('/penjualan/save',[penjualanController::class,'save']);
 // Route::post('/laporan',[laporanController::class,'refresh']);
 // Route::get('/laporan/data/{awal}/{akhir}',[laporanController::class,'data']->name('laporan.data'));
 

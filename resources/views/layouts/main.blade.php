@@ -4,6 +4,7 @@
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css">
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
         <meta charset="utf-8" />
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <title>SI Pengolahan Toko</title>
@@ -174,11 +175,10 @@
         </script>
         <script>
             let harga=document.getElementById('dibayar').value;
-            $('#bayar').keyup(
+            $('#diterima').keyup(
                 function() {
-                    let bayar=$('#bayar').val();
+                    let bayar=$('#diterima').val();
                     let total=parseFloat(bayar)-parseFloat(harga);
-                    
                     $('#kembali').val(total);
                 }
             );
@@ -188,14 +188,37 @@
             $("#id_barang").keyup(function(){
                 console.log("id_barang = "+$('#id_barang').val())
                 $.ajax({
-                url: 'http://127.0.0.1:8000/api/barang/'+$('#id_barang').val(),
-                data: {id_barang:value_kode},
+                url: '/api/barang/'+$('#id_barang').val(),
+                // data: {id_barang:value_kode},
                 success: function(data){
                     $('#name').val(data['name']);
                     $('#merk').val(data['merk']);
                     $('#harga').val(data['harga_jual']);
                     $('#hb').val(data['harga_beli']);
                     console.log(data['name']);
+                }
+                });
+            })
+        </script>
+        <script>
+            $(document).on('click','#saveBtn',function(){
+                var dibayar = document.getElementById('dibayar').value;
+                var diterima = document.getElementById('diterima').value;
+                var kembali = document.getElementById('kembali').value;
+                $.ajax({
+                url: '/penjualan/save',
+                type: 'post',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {
+                    subtotal: dibayar,
+                    diterima: diterima,
+                    kembali: kembali
+                },
+                success: function(data){
+                    // location.reload();
+                    alert('Success')
                 }
                 });
             })
