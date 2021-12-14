@@ -21,7 +21,7 @@
     }
     
     </style>
-    <center><h3>Laporan Data Barang</h3>
+    <center><h3>Laporan Data User Sistem</h3>
     <p>Hanstech computer service<br>
         Jl.Raya Gopa'an SambungAnyar Kec.Dukun,Kab.Gresik</p></center>
      <div class="garis"></div>   
@@ -30,29 +30,25 @@
             <tr>
                 <th scope="col">No.</th>
                 <th scope="col">Nama</th>
-                <th scope="col">Merk</th>
-                <th scope="col">Stok</th>
-                <th scope="col">Harga Jual</th>
-                <th scope="col">Harga Beli</th>
-                <th scope="col">Laba</th>
+                <th scope="col">Email</th>
+                <th scope="col">Roles</th>
+                <th scope="col">tanggal dibuat</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($barang as $a)
+            @foreach ($user as $a)
             <tr>
                 <th scope="row">{{$loop->iteration}}</th>
                 <td>{{$a->name}}</td>
-                <td>{{$a->merk}}</td>
-                <td>{{$a->stock}}</td>
-                <td>Rp. {{$hj=$a->harga_jual}}</td>
-                <td>Rp. {{$hb=$a->harga_beli}}</td>
-                <td>Rp. {{$hj-$hb}}</td>
+                <td>{{$a->email}}</td>
+                <td>{{$a->roles}}</td>
+                <td>{{$a->created_at}}</td>
             </tr>
             @endforeach
         </tbody>
     </table>
     <div align="right">
-            <p class="mt-5">{{$tanggalAkhir}}</p>
+            <p class="mt-5">12-12-2021</p>
             <p class="mt-5">{{ Auth::user()->name }}</p>
     </div>
     <!-- Optional JavaScript -->

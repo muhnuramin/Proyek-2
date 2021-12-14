@@ -22,6 +22,7 @@ Route::get('/user',[userController::class,'index'])->name('user');
 Route::post('/user/create',[userController::class,'create']);
 Route::post('/user/update',[userController::class,'update'])->name('update.id');
 Route::get('/user/delete/{id}',[userController::class,'delete']);
+Route::get('/user/cetak_pdf',[userController::class,'cetak_pdf']);
 
 Route::get('/barang',[barangController::class,'index'])->name('barang');
 Route::get('/barang/cetak_pdf', [barangController::class,'cetak_pdf'])->name('pdf');

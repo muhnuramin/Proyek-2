@@ -6,7 +6,7 @@
         <li class="breadcrumb-item active"><i class="fas fa-tachometer-alt"></i>&nbsp;Dashboard&nbsp; / &nbsp;User</li>
     </ol>
     <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addUser"><i class="fa fa-user-plus"></i>&nbsp;Add User</a>
-    <button type="button" class="btn btn-success"><i class="fas fa-file-pdf"></i>&nbsp;Export PDF</button>
+    <a href="/user/cetak_pdf" type="button" target="_blank" class="btn btn-success"><i class="fas fa-file-pdf"></i>&nbsp;Export PDF</a>
     <div class="card mb-4 mt-2">
         <div class="card-body">
             <table id="datatablesSimple">

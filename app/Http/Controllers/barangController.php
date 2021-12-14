@@ -64,7 +64,8 @@ class barangController extends Controller
 
     public function cetak_pdf(){
         $barang=Barang::all();
-        $pdf = PDF::loadview('barang.mbarang_pdf', ['barang'=>$barang]);
+        $tanggalAkhir=date('y-m-d');
+        $pdf = PDF::loadview('barang.mbarang_pdf', ['barang'=>$barang,'tanggalAkhir'=>$tanggalAkhir]);
         return  $pdf->stream();
     }
 }

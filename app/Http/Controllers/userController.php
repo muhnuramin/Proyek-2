@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Session;
+use PDF;
+
 class userController extends Controller
 {
     public function __construct()
@@ -55,5 +57,12 @@ class userController extends Controller
             'alert'=>'warning',
         );
         return redirect('/user')->with($notifikasi);
+    }
+
+    public function cetak_pdf(){
+        $user=User::all();
+        $tanggalAkhir=date('y-m-d');
+        $pdf = PDF::loadview('user.muser_pdf', ['user'=>$user,'tanggalAkhir'=>$tanggalAkhir]);
+        return  $pdf->stream();
     }
 }
