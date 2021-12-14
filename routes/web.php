@@ -44,6 +44,9 @@ Route::get('/pembelian/delete/{id_pembelian}',[pembelianController::class,'delet
 Route::get('/pembelian/clear',[pembelianController::class,'clear']);
 Route::get('/pembelian/printnota',[penjualanController::class,'nota']);
 
+Route::post('/penjualan/simpan',[detailPenjualanController::class,'create']);
+Route::post('/pembelian/simpan',[detailPembelianController::class,'create']);
+
 Route::get('/laporan',[laporanController::class,'index'])->name('laporan');
 // Route::post('/laporan',[laporanController::class,'refresh']);
 // Route::get('/laporan/data/{awal}/{akhir}',[laporanController::class,'data']->name('laporan.data'));

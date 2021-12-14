@@ -63,7 +63,15 @@ class penjualanController extends Controller
     }
 
     public function nota(){
-        return view('Keuangan.Notapenjualan');
+        $penjualans=Penjualan::all();
+        $countTotal = \DB::table('penjualans')->sum('subtotal');
+        $tanggalAkhir=date('y/m/d');
+        return view('Keuangan.Notapenjualan',
+        [
+            'Penjualan'=>$penjualans,
+            'countTotal'=>$countTotal,
+            'tanggalAkhir'=>$tanggalAkhir
+        ]);
     }
 
 }

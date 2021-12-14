@@ -113,6 +113,8 @@
                         </tbody>
                     </table>
                     <div class="harga" id="total">
+                        <form action="/pembelian/simpan" method="post" enctype="multipart/form-data">
+                        @csrf
                         <div class="form-group row mt-2">
                             <label for="harga" class="col-sm-3 col-form-label">
                                 <h6>Dibayar</h6>
@@ -144,6 +146,7 @@
                     <a href="/pembelian/printnota" target="_blank" type="button" class="btn btn-warning mb-2"><i class="fas fa-print"></i></a>
                     <button type="button" class="btn btn-warning mb-2"><i class="fas fa-save"></i></button>
                     <a href="pembelian/clear" class="btn btn-danger mb-2"><i class="fas fa-eraser"></i></a>
+                </form>
                 </div>
             </div>
         </div>
