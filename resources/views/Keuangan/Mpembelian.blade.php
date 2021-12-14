@@ -141,8 +141,8 @@
                             </div>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-warning mb-2"><i class="fas fa-file-pdf"></i>&nbsp;</button>
-                    <button type="button" class="btn btn-warning mb-2"><i class="fas fa-save"></i>&nbsp;</button>
+                    <a href="/pembelian/printnota" target="_blank" type="button" class="btn btn-warning mb-2"><i class="fas fa-print"></i></a>
+                    <button type="button" class="btn btn-warning mb-2"><i class="fas fa-save"></i></button>
                     <a href="pembelian/clear" class="btn btn-danger mb-2"><i class="fas fa-eraser"></i></a>
                 </div>
             </div>

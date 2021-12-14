@@ -54,4 +54,7 @@ class pembelianController extends Controller
         $pembelians=Pembelian::truncate();
         return redirect('/pembelian');
     }
+    public function nota(){
+        return view('Keuangan.Notapembelian');
+    }
 }

@@ -36,11 +36,13 @@ Route::post('/penjualan/create',[penjualanController::class,'create'])->name('ta
 Route::get('/penjualan/autofill',[penjualanController::class,'autocomplete'])->name('autocomplete');
 Route::get('/penjualan/delete/{id_penjualan}',[penjualanController::class,'delete']);
 Route::get('/penjualan/clear',[penjualanController::class,'clear']);
+Route::get('/penjualan/printnota',[penjualanController::class,'nota']);
 
 Route::get('/pembelian',[pembelianController::class,'index'])->name('pembelian');
 Route::post('/pembelian/create',[pembelianController::class,'create'])->name('tambah-pembelian');
 Route::get('/pembelian/delete/{id_pembelian}',[pembelianController::class,'delete']);
 Route::get('/pembelian/clear',[pembelianController::class,'clear']);
+Route::get('/pembelian/printnota',[penjualanController::class,'nota']);
 
 Route::get('/laporan',[laporanController::class,'index'])->name('laporan');
 // Route::post('/laporan',[laporanController::class,'refresh']);
