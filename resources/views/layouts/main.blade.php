@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <title>SI Pengolahan Toko</title>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <link href="{{asset('https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css')}}" rel="stylesheet" />
+        {{-- <link href="{{asset('https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css')}}" rel="stylesheet" /> --}}
         <link href="{{asset('css/styles.css')}}" rel="stylesheet" />
         <link href="{{asset('css/customStyle.css')}}" rel="stylesheet" />
         <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js')}}" crossorigin="anonymous"></script>
@@ -81,9 +81,7 @@
                                     <a class="nav-link collapsed hover {{Request::is('penjualan') ? 'aktif' : ''}}" href="/penjualan">
                                         Penjualan
                                     </a>
-                                    <a class="nav-link collapsed hover {{Request::is('pembelian') ? 'aktif' : ''}}" href="/pembelian">
-                                        Pembelian
-                                    </a>
+                                    {{-- <a class="nav-link col  --}}
                                     <a class="nav-link collapsed hover {{Request::is('laporan') ? 'aktif' : ''}}" href="/laporan">
                                         Data Keuangan
                                     </a>
@@ -123,8 +121,8 @@
         <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js')}}" crossorigin="anonymous"></script>
         <script src="{{asset('assets/demo/chart-area-demo.js')}}"></script>
         <script src="{{asset('assets/demo/chart-bar-demo.js')}}"></script>
-        <script src="{{asset('https://cdn.jsdelivr.net/npm/simple-datatables@latest')}}" crossorigin="anonymous"></script>
-        <script src="{{asset('js/datatables-simple-demo.js')}}"></script>
+        <script src='https://cdn.jsdelivr.net/npm/simple-datatables@latest' type="text/javascript"></script>
+        {{-- <script src="{{asset('js/datatables-simple-demo.js')}}"></script> --}}
         <script>
             $(document).on('click','#btn-edit-user',function(){
                 let id=$(this).data('id');
@@ -189,7 +187,6 @@
                 console.log("id_barang = "+$('#id_barang').val())
                 $.ajax({
                 url: '/api/barang/'+$('#id_barang').val(),
-                // data: {id_barang:value_kode},
                 success: function(data){
                     $('#name').val(data['name']);
                     $('#merk').val(data['merk']);
@@ -224,12 +221,41 @@
             })
         </script>
         <script>
+            const dataTable1 = new simpleDatatables.DataTable("#tabel1");
+            $('#detail-laporan').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var tanggal = button.data('tanggal') // Extract info from data-* attributes\
+            var modal = $(this)
+            dataTable1.init({
+            searchable: true,
+            fixedHeight: false,
+            });
+            modal.find('.modal-title').text('Detail Laporan Tanggal ' + tanggal)
+            $.ajax({
+                url: '/api/laporan/'+tanggal,
+                type: 'get',
+                success: function(data){
+                    dataTable1.rows().add(data);
+                }
+            });
+            })
+            $('#detail-laporan').on('hidden.bs.modal', function (e) {
+                dataTable1.destroy();
+            })
+        </script>
+        <script>
             @if(Session::has('pesan'))
                 toastr.{{Session::get('alert')}}("{{Session::get('pesan')}}");
             @endif
         </script>
         <script>
             const dataTable = new simpleDatatables.DataTable("#keuangan", {
+            searchable: false,
+            fixedHeight: true,
+            })
+        </script>
+        <script>
+            const dataTable = new simpleDatatables.DataTable("#data-barang", {
             searchable: false,
             fixedHeight: true,
             })

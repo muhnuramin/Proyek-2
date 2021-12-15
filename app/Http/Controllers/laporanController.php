@@ -53,4 +53,46 @@ class laporanController extends Controller
 
         return view('Keuangan.MDataKeuangan',compact('tanggalAwal','tanggalAkhir','laporan'));
     }
+
+    public function getDetail($tanggal){
+        //Cek apakah string adalah format tanggal
+        if ($this->isDate($tanggal)) {            
+            $laporan = Laporan::select([
+                'barangs.name as name',
+                'total_penjualan',
+                'banyak_penjualan',
+                'total_pembelian',
+                'banyak_penjualan',
+                'pendapatan'
+            ])
+            ->join('barangs', 'laporans.id_barang', '=', 'barangs.id_barang')
+            ->whereDate("laporans.created_at", $tanggal)
+            ->get();
+            $data = [];
+            foreach ($laporan as $l) {
+                $temp = [];
+                $temp = array_merge($temp, array($l['name']));
+                $temp = array_merge($temp, array((string)$l['total_penjualan']));
+                $temp = array_merge($temp, array((string)$l['banyak_penjualan']));
+                $temp = array_merge($temp, array((string)$l['total_pembelian']));
+                $temp = array_merge($temp, array((string)$l['banyak_penjualan']));
+                $temp = array_merge($temp, array((string)$l['pendapatan']));
+                array_push($data, $temp);
+            }
+            return response()->json($data);            
+        }
+    }
+
+    public function isDate($value) {
+        if (!$value) {
+            return false;
+        } else {
+            $date = date_parse($value);
+            if($date['error_count'] == 0 && $date['warning_count'] == 0){
+                return checkdate($date['month'], $date['day'], $date['year']);
+            } else {
+                return false;
+            }
+        }
+    }
 }

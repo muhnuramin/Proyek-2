@@ -8,7 +8,7 @@
     <a href="/barang/cetak_pdf"  target="_blank" type="button" class="btn btn-success"><i class="fas fa-file-pdf"></i>&nbsp;Export PDF</a>
     <div class="card mb-4 mt-2">
         <div class="card-body">
-            <table id="datatablesSimple">
+            <table id="data-barang" class="table">
                 <thead>
                     <tr>
                         <th>No.</th>

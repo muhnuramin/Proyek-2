@@ -37,6 +37,7 @@ Route::get('/penjualan/autofill',[penjualanController::class,'autocomplete'])->n
 Route::get('/penjualan/delete/{id_penjualan}',[penjualanController::class,'delete']);
 Route::get('/penjualan/clear',[penjualanController::class,'clear']);
 Route::get('/penjualan/printnota',[penjualanController::class,'nota']);
+Route::post('/penjualan/save',[penjualanController::class,'save']);
 
 Route::get('/pembelian',[pembelianController::class,'index'])->name('pembelian');
 Route::post('/pembelian/create',[pembelianController::class,'create'])->name('tambah-pembelian');
@@ -48,7 +49,8 @@ Route::post('/penjualan/simpan',[detailPenjualanController::class,'create']);
 Route::post('/pembelian/simpan',[detailPembelianController::class,'create']);
 
 Route::get('/laporan',[laporanController::class,'index'])->name('laporan');
-Route::post('/penjualan/save',[penjualanController::class,'save']);
+
+
 // Route::post('/laporan',[laporanController::class,'refresh']);
 // Route::get('/laporan/data/{awal}/{akhir}',[laporanController::class,'data']->name('laporan.data'));
 
@@ -59,3 +61,4 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/api/barang/{id}',[penjualanController::class,'getBarangId']);
+Route::get('/api/laporan/{tanggal}',[laporanController::class,'getDetail']);
