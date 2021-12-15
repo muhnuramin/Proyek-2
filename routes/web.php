@@ -42,7 +42,7 @@ Route::get('/pembelian',[pembelianController::class,'index'])->name('pembelian')
 Route::post('/pembelian/create',[pembelianController::class,'create'])->name('tambah-pembelian');
 Route::get('/pembelian/delete/{id_pembelian}',[pembelianController::class,'delete']);
 Route::get('/pembelian/clear',[pembelianController::class,'clear']);
-Route::get('/pembelian/printnota',[penjualanController::class,'nota']);
+Route::get('/pembelian/printnota',[pembelianController::class,'nota']);
 
 Route::post('/penjualan/simpan',[detailPenjualanController::class,'create']);
 Route::post('/pembelian/simpan',[detailPembelianController::class,'create']);

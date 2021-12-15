@@ -61,11 +61,12 @@
         <p style="float: right">{{ Auth::user()->name }}</p>
     </div>
     <div class="clear-both" style="clear: both;"></div>
-    <p>No.0001</p>
+    <p>No.000{{$p->id_Penjualan}}</p>
     <br>
     <p class="text-center">===================================</p>
     <p class="text-center">===================================</p>
     <p class="text-center">-- TERIMA KASIH --</p>
+    <p class="text-center">===================================</p>
     <script>
         let body = document.body;
         let html = document.documentElement;

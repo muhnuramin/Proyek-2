@@ -15,9 +15,12 @@ class mainController extends Controller
         $this->middleware('auth');
     }
     public function index(){
+        // $waktu=date('y-m-d');
+        // $bulan=date('m');
         $barangs=Barang::all();
         $barangs2=Barang::whereStock('0')->get();
         $users=User::all();
+        // $laporan=Laporan::whereMonth('created_at',$bulan)->get();
         $laporan=Laporan::all();
         $detail_penjualan=detail_penjualan::all();
         $countPenjualan=\DB::table('detail_penjualans')->sum('subtotal');
@@ -32,7 +35,7 @@ class mainController extends Controller
             'detail_penjualan'=>$detail_penjualan,
             'barangs2'=>$barangs2,
             'countlaporan'=>$countlaporan,
-            'countlaporan2'=>$countlaporan2
+            'countlaporan2'=>$countlaporan2,
         ]);
     }
 }

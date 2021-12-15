@@ -31,7 +31,7 @@
                             </label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control form-control-sm" name="name" id="name"
-                                    placeholder="nama" >
+                                    placeholder="nama" readonly>
                             </div>
                         </div>
 
@@ -41,7 +41,7 @@
                             </label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control form-control-sm" name="merk" id="merk"
-                                    placeholder="merk" >
+                                    placeholder="merk" readonly>
                             </div>
                         </div>
 
@@ -52,13 +52,13 @@
                             </label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control form-control-sm" name="harga" id="harga"
-                                    placeholder="harga" >
+                                    placeholder="harga" readonly>
                             </div>
                         </div>
 
                         <div class="col-sm-9 d-none">
                             <input type="text" class="form-control form-control-sm" name="hb" id="hb"
-                                placeholder="harga beli">
+                                placeholder="harga beli" readonly>
                         </div>
 
                         <div class="form-group row mt-2">

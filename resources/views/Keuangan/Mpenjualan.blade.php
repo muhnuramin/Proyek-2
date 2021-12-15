@@ -31,7 +31,7 @@
                             </label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control form-control-sm" name="name" id="name"
-                                    placeholder="nama" disabled>
+                                    placeholder="nama" readonly>
                             </div>
                         </div>
 
@@ -41,7 +41,7 @@
                             </label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control form-control-sm" name="merk" id="merk"
-                                    placeholder="merk" disabled>
+                                    placeholder="merk" readonly>
                             </div>
                         </div>
 

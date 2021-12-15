@@ -55,6 +55,13 @@ class pembelianController extends Controller
         return redirect('/pembelian');
     }
     public function nota(){
-        return view('Keuangan.Notapembelian');
+        $pembelians=Pembelian::all();
+        $countTotal=\DB::table('pembelians')->sum('subtotal');
+        $tanggalAkhir=date('y/m/d');
+        return view('Keuangan.Notapembelian',[
+            'Pembelian'=>$pembelians,
+            'countTotal'=>$countTotal,
+            'tanggalAkhir'=>$tanggalAkhir
+        ]);
     }
 }
