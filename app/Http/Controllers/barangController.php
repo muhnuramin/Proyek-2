@@ -40,7 +40,7 @@ class barangController extends Controller
             'pesan'=>'Barang berhasil ditambahkan',
             'alert'=>'success',
         );
-        return redirect('/barang');
+        return redirect('/barang')->with($notifikasi);
     }
 
     public function update(Request $request){

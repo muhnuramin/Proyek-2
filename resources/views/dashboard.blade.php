@@ -28,7 +28,7 @@
         <div class="col-xl-3 col-md-6">
             <div class="card bg mb-4">
                 <div class="card-body">Pemasukkan</div>
-                <div class="isi-card d-flex justify-content-end">Rp.10</div>
+                <div class="isi-card d-flex justify-content-end">Rp.{{$countlaporan}}</div>
                 <div class="card-footer d-flex align-items-center justify-content-between">
                     <a class="small text-white stretched-link text-decoration-none" href="#">View Details</a>
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -38,7 +38,7 @@
         <div class="col-xl-3 col-md-6">
             <div class="card bg mb-4">
                 <div class="card-body">Pengeluaran</div>
-                <div class="isi-card d-flex justify-content-end">Rp.10</div>
+                <div class="isi-card d-flex justify-content-end">Rp.{{$countlaporan2}}</div>
                 <div class="card-footer d-flex align-items-center justify-content-between">
                     <a class="small text-white stretched-link text-decoration-none" href="#">View Details</a>
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -59,13 +59,22 @@
                         <thead>
                             <tr>
                                 <th scope="col">No. </th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
+                                <th scope="col">Tanggal</th>
+                                <th scope="col">subtotal</th>
+                                <th scope="col">diterima</th>
+                                <th scope="col">Kembalian</th>
                             </tr>
                         </thead>
                         <tbody>
-
+                            @foreach ($detail_penjualan as $a)
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$a->created_at}}</td>
+                                    <td>Rp.{{$a->subtotal}}</td>
+                                    <td>Rp.{{$a->diterima}}</td>
+                                    <td>Rp.{{$a->kembali}}</td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -82,13 +91,20 @@
                         <thead>
                             <tr>
                                 <th scope="col">No. </th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
+                                <th scope="col">Nama Brang</th>
+                                <th scope="col">Harga Jual</th>
+                                <th scope="col">Harga beli</th>
                             </tr>
                         </thead>
                         <tbody>
-
+                            @foreach ($barangs2 as $b)
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$b->name}}</td>
+                                    <td>{{$b->harga_jual}}</td>
+                                    <td>{{$b->harga_beli}}</td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

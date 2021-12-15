@@ -25,7 +25,6 @@ class penjualanController extends Controller
         'Penjualan'=>$penjualans,
         'count'=>$count
         ]);
-
     }
 
     public function create(Request $request){
@@ -83,12 +82,6 @@ class penjualanController extends Controller
             ]
         );
         }
-        // Laporan::create([
-        //     'id_barang'=>$penjualan->id_barang,
-        //     'total_penjualan'=>$penjualan->subtotal,
-        //     'banyak_penjualan'=>$penjualan->qty,
-        // ]);
-        // // $penjualans=Penjualan::truncate();
         $penjualan->update([
             'id_transaksi'=>$detail_penjualan->id_detail_penjualan,
         ]);
