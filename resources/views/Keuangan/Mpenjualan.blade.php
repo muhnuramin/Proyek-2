@@ -153,7 +153,7 @@
         </div>
     </div>
 </div>
-{{-- Modal Tambah item --}}
+{{-- Modal Tambah item --}} 
 <div class="modal fade bd-example-modal-lg" id="pilih" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg">

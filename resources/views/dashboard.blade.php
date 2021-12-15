@@ -29,6 +29,7 @@
             <div class="card bg mb-4">
                 <div class="card-body">Pemasukkan</div>
                 <div class="isi-card d-flex justify-content-end">Rp.{{$countlaporan}}</div>
+                {{-- <div class="isi-card d-flex justify-content-end">{{$totalPenjualan}}</div> --}}
                 <div class="card-footer d-flex align-items-center justify-content-between">
                     <a class="small text-white stretched-link text-decoration-none" href="/laporan">View Details</a>
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -39,6 +40,7 @@
             <div class="card bg mb-4">
                 <div class="card-body">Pengeluaran</div>
                 <div class="isi-card d-flex justify-content-end">Rp.{{$countlaporan2}}</div>
+                {{-- <div class="isi-card d-flex justify-content-end">{{$totalPembelian}}</div> --}}
                 <div class="card-footer d-flex align-items-center justify-content-between">
                     <a class="small text-white stretched-link text-decoration-none" href="/laporan">View Details</a>
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -89,14 +91,20 @@
                 <div class="card-body">
                     <table class="table">
                         <thead>
+                            @foreach($cekStock as $cekStock)
                             <tr>
                                 <th scope="col">No. </th>
                                 <th scope="col">Nama Brang</th>
-                                <th scope="col">Harga Jual</th>
-                                <th scope="col">Harga beli</th>
+                                <th scope="col">Merk</th>
                             </tr>
+                            <tr>
+                                <td scope="col">{{$cekStock->Id}}</td>
+                                <td scope="col">{{$cekStock->Nama}}</td>
+                                <td scope="col">{{$cekStock->Merk}}</td>
+                            </tr>
+                            @endforeach
                         </thead>
-                        <tbody>
+                        {{-- <tbody>
                             @foreach ($barangs2 as $b)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
@@ -105,7 +113,7 @@
                                     <td>{{$b->harga_beli}}</td>
                                 </tr>
                             @endforeach
-                        </tbody>
+                        </tbody> --}}
                     </table>
                 </div>
             </div>

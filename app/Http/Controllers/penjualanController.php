@@ -69,22 +69,24 @@ class penjualanController extends Controller
         ]);
         $penjualan=Penjualan::whereNull("id_transaksi");
         $penjualan_data=$penjualan->get();
-        $laporan=Laporan::whereDate("created_at", date('Y-m-d')
-        );
+        // $laporan=Laporan::whereDate("created_at", date('Y-m-d')
+        // );
         // dd($penjualan_data);
         foreach($penjualan_data as $l){
-            $laporan->updateOrCreate([
+            $laporan=Laporan::whereDate("created_at", date('Y-m-d'))->updateOrCreate([
                 'id_barang'=>$l->id_barang,
             ],
             [
-                'total_penjualan'=>$l->subtotal,
-                'banyak_penjualan'=>$l->qty,
+                'total_penjualan'=>\DB::raw("total_penjualan + $l->subtotal"),
+                'banyak_penjualan'=>\DB::raw("banyak_penjualan + $l->qty"),
+                'pendapatan'=>\DB::raw("total_penjualan - total_pembelian"),
             ]
         );
         }
         $penjualan->update([
             'id_transaksi'=>$detail_penjualan->id_detail_penjualan,
         ]);
+        
         return redirect('/penjualan');
     }
 

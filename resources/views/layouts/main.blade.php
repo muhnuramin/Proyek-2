@@ -217,8 +217,8 @@
                     kembali: kembali
                 },
                 success: function(data){
-                    // location.reload();
-                    alert('Success')
+                    location.reload();
+                    // alert('Success')
                 }
                 });
             })

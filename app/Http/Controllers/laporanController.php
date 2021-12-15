@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Models\Barang;
 use App\Models\Penjualan;
+use App\Models\Laporan;
 
 class laporanController extends Controller
 {
@@ -25,14 +26,15 @@ class laporanController extends Controller
         // ->groupBy('Tanggal_Beli')
         // ->get();
 
-        $penjualans = Penjualan::select([
-            'id_barang',
-            \DB::raw("DATE(created_at) as Tanggal_Jual"),
-            \DB::raw('SUM(subtotal) as Total_Jual'),
-            \DB::raw('COUNT(id_penjualan) as Banyak_Jual')
+        $laporan = Laporan::select([
+            // 'id_barang',
+            \DB::raw("DATE(created_at) as Tanggal"),
+            \DB::raw('SUM(total_penjualan) as Total_Jual'),
+            \DB::raw('SUM(total_pembelian) as Total_Beli'),
+            \DB::raw('SUM(pendapatan) as Pendapatan')
         ])
-        ->groupBy('id_barang')
-        ->groupBy('Tanggal_jual')
+        // ->groupBy('id_barang')
+        ->groupBy('Tanggal')
         ->get();
         // dd($penjualans->first()->barang()->first());
         // return response()->json($penjualans, 200);
@@ -49,6 +51,6 @@ class laporanController extends Controller
         $tanggalAkhir=date('y-m-d');
         
 
-        return view('Keuangan.MDataKeuangan',compact('tanggalAwal','tanggalAkhir','penjualans'));
+        return view('Keuangan.MDataKeuangan',compact('tanggalAwal','tanggalAkhir','laporan'));
     }
 }
